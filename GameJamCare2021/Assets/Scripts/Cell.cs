@@ -8,6 +8,7 @@ public class Cell : MonoBehaviour{
     [System.NonSerialized] public List<Cell> neighbors;
     [System.NonSerialized] public Cell parent;
     [System.NonSerialized] public bool visited;
+    [System.NonSerialized] public Node<Cell> node;
     void Update(){
         if (car) trail.SetActive(false);
         if (trail.activeInHierarchy == false) car = false;
