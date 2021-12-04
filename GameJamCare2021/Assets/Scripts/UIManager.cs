@@ -12,6 +12,9 @@ public class UIManager : MonoBehaviour {
     [Header("Text")]
     public TextMeshProUGUI textStock;
     public TextMeshProUGUI textTimer;
+
+    [Header("Debug")]
+    public bool enabledDebug;
     #endregion
     public static UIManager Instance { get; private set; }
 
@@ -27,16 +30,11 @@ public class UIManager : MonoBehaviour {
         textTimer.text = 0.ToString(); // Timer
     }
 
-    public void ChangeState() {
-        switch (GameManager.GameStates) {
-            case GameManager.GameState.MainMenu:
-        break;
-            case GameManager.GameState.InGame:
-                break;
-            case GameManager.GameState.Pause:
-                break;
-            case GameManager.GameState.GameOver:
-                break;
+    public void ChangeState(GameManager.GameState oldGameState) {
+        uiElement[(int)oldGameState].SetActive(false);
+        uiElement[(int)GameManager.GameStates].SetActive(true);
     }
-    }
+
+    #region Debug
+    #endregion
 }
