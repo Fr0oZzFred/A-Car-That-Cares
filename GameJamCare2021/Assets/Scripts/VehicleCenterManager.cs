@@ -5,11 +5,11 @@ using UnityEngine;
 public class VehicleCenterManager : MonoBehaviour
 {
     [SerializeField]GameObject CarPrefab;
-    [SerializeField] List<GameObject> vehicleList; //mettre en script
+    [SerializeField] List<CarBehaviour> vehicleList;
 
     void Start()
     {
-        vehicleList = new List<GameObject>();
+        vehicleList = new List<CarBehaviour>();
     }
 
     void Update()
@@ -22,7 +22,7 @@ public class VehicleCenterManager : MonoBehaviour
     {
         GameObject car = Instantiate(CarPrefab, transform.position, Quaternion.identity);
         car.gameObject.name = "voiture" + vehicleList.Count;
-        // Script script = car.GetComponenet<Script>();
-        vehicleList.Add(car);
+        CarBehaviour script = car.GetComponent<CarBehaviour>();
+        vehicleList.Add(script);
     }
 }
