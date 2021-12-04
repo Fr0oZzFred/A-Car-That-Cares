@@ -5,8 +5,13 @@ public class CarBehaviour : MonoBehaviour
 {
     public MapPathFinding map;
     public static CarBehaviour globalCar;
+    public Vector2Int currentCell;
     void Awake(){
-        globalCar = this;    
+        globalCar = this;
+    }
+    void Update()
+    {
+        map.map[currentCell.x, currentCell.y].car = true;
     }
     public void GoTo(Cell target){
     }
