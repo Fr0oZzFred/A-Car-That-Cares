@@ -7,14 +7,16 @@ public class GridPathFindingEnzo : MonoBehaviour
     public GameObject cellPrefab;
     public Vector2Int sizeGrid;
     public CellEnzo[,] grid; //doit pas etre public mais on avait pas le temps
-    public GetGrid getGrid;
+    //public GetGrid getGrid;
 
     public Material basic, visited, chosen;
 
     void Start() //Awake
     {
-        grid = new CellEnzo[sizeGrid.x, sizeGrid.y];
-        
+        grid = GetGrid.grid;
+        Debug.Log(GetGrid.grid);
+        sizeGrid.x = GetGrid.grid.GetLength(1);
+        sizeGrid.y = GetGrid.grid.GetLength(0);
         /*
         for (int y = 0; y < sizeGrid.y; y++)
         {
@@ -31,7 +33,7 @@ public class GridPathFindingEnzo : MonoBehaviour
         {
             for (int x = 0; x < sizeGrid.x; x++)
             {
-                CellEnzo c = getGrid.grid[x, y];
+                CellEnzo c = grid[x, y];
                 c.neighbors = new List<CellEnzo>();
                 if (x > 0) c.neighbors.Add(grid[x - 1, y]);
                 if (y > 0) c.neighbors.Add(grid[x, y - 1]);
@@ -52,9 +54,9 @@ public class GridPathFindingEnzo : MonoBehaviour
         {
             for (int x = 0; x < sizeGrid.x; x++)
             {
-                CellEnzo c = grid[x, y];
+                CellEnzo c = GetGrid.grid[y, x];
                 c.visited = false;
-                c.SetMaterial(basic);
+                //c.SetMaterial(basic);
                 c.node = null;
                 c.parent = null;
             }
@@ -71,7 +73,7 @@ public class GridPathFindingEnzo : MonoBehaviour
             NodeEnzo<CellEnzo> current = frontier.PopMin();
             CellEnzo cell = current.content;
             cell.visited = true;
-            cell.SetMaterial(visited);
+            //cell.SetMaterial(visited);
             if (cell == target) break;
 
             foreach (CellEnzo neigh in cell.neighbors)
@@ -97,12 +99,12 @@ public class GridPathFindingEnzo : MonoBehaviour
         while (currentCell.parent != null)
         {
             res.Add(currentCell);
-            currentCell.SetMaterial(chosen);
+            //currentCell.SetMaterial(chosen);
             currentCell = currentCell.parent;
-            if (currentCell.parent == null)
+            /*if (currentCell.parent == null)
             {
                 currentCell.SetMaterial(chosen);
-            }
+            }*/
         }
         res.Reverse();
         return res; //note pour a pathfinding on fait current.priority + 1 + distance a vol d'oiseau

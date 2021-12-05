@@ -6,11 +6,11 @@ public class GetGrid : MonoBehaviour {
     List<GameObject> goX;
     List<GameObject> goZ; //Child de Grid
     int indexZMax = 0; //Récup la ranger la plus grande
-    public CellEnzo[,] grid;
-    CellEnzo wall;
-    private void Awake() {
-        wall = new CellEnzo();
-        wall.SetWall(true); ;
+    public static CellEnzo[,] grid;
+    GameObject wall;
+    private void Start() {
+        wall = new GameObject();
+        wall.AddComponent<CellEnzo>();
         goZ = new List<GameObject>();
         for (int x = 0; x < goX.Count; x++) {
             for (int z = 1; z <= goX[x].transform.childCount; z++) {
@@ -27,7 +27,7 @@ public class GetGrid : MonoBehaviour {
                 if (goX[x].transform.childCount > z && goZ.Count > 0) {
                     grid[x, z + 1] = goZ[z].GetComponent<CellEnzo>();
                 } else {
-                    grid[x, z + 1] = wall; // à changer
+                    grid[x, z + 1] = wall.GetComponent<CellEnzo>(); ; // à changer
                 }
             }
             goZ.RemoveRange(0, goX[x].transform.childCount);

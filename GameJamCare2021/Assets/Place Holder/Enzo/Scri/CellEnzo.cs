@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CellEnzo : MonoBehaviour
 {
-    public GameObject wallObject;
+    //public GameObject wallObject;
     public bool IsWall;
-    /*[System.NonSerialized]*/ public bool visited;
+    [System.NonSerialized] public bool visited;
     [System.NonSerialized] public List<CellEnzo> neighbors;
     [System.NonSerialized] public CellEnzo parent;
     [System.NonSerialized] public NodeEnzo<CellEnzo> node;
@@ -17,10 +17,10 @@ public class CellEnzo : MonoBehaviour
         //wallObject.SetActive(wall);
     }
 
-    public void SetMaterial(Material mat)
+    /*public void SetMaterial(Material mat)
     {
         GetComponent<MeshRenderer>().material = mat;
-    }
+    }*/
 
     private void OnMouseDown()
     {
