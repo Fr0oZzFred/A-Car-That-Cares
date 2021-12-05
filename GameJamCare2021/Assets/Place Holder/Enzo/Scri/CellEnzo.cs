@@ -24,7 +24,9 @@ public class CellEnzo : MonoBehaviour
 
     private void OnMouseDown()
     {
-        CharacterEnzo.globalCharacter.GoTo(this);
+        if (MouseManagerEnzo.Instance.selected != null)
+        {
+            MouseManagerEnzo.Instance.selected.GoTo(this);
+        }
     }
-
 }

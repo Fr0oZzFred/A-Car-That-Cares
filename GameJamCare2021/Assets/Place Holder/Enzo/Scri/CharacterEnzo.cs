@@ -5,14 +5,14 @@ using UnityEngine;
 public class CharacterEnzo : MonoBehaviour
 {
     public GridPathFindingEnzo grid;
-    public static CharacterEnzo globalCharacter; //pas faire ca marche mais c po bien
+    //public static CharacterEnzo globalCharacter; //pas faire ca marche mais c po bien
     CellEnzo currentCell;
-    [SerializeField]List<CellEnzo> goToList;
+    [SerializeField] List<CellEnzo> goToList;
 
 
     void Start()
     {
-        globalCharacter = this;
+        //globalCharacter = this;
         currentCell = grid.grid[0, 0];
         goToList = new List<CellEnzo>();
     }
@@ -38,5 +38,11 @@ public class CharacterEnzo : MonoBehaviour
                 goToList.RemoveAt(0);
             }
         }
+    }
+    private void OnMouseDown()
+    {
+        MouseManagerEnzo.Instance.selected = this;
+        MouseManagerEnzo.Instance.selectedName = this.gameObject.name;
+        Debug.Log("Touché");
     }
 }
