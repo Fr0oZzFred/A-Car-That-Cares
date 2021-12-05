@@ -7,12 +7,15 @@ public class GridPathFindingEnzo : MonoBehaviour
     public GameObject cellPrefab;
     public Vector2Int sizeGrid;
     public CellEnzo[,] grid; //doit pas etre public mais on avait pas le temps
+    public GetGrid getGrid;
 
     public Material basic, visited, chosen;
 
-    void Awake()
+    void Start() //Awake
     {
         grid = new CellEnzo[sizeGrid.x, sizeGrid.y];
+        
+        /*
         for (int y = 0; y < sizeGrid.y; y++)
         {
             for (int x = 0; x < sizeGrid.x; x++)
@@ -23,22 +26,23 @@ public class GridPathFindingEnzo : MonoBehaviour
                 grid[x, y] = go.GetComponent<CellEnzo>();
             }
         }
+        */
         for (int y = 0; y < sizeGrid.y; y++)
         {
             for (int x = 0; x < sizeGrid.x; x++)
             {
-                CellEnzo c = grid[x, y];
+                CellEnzo c = getGrid.grid[x, y];
                 c.neighbors = new List<CellEnzo>();
                 if (x > 0) c.neighbors.Add(grid[x - 1, y]);
                 if (y > 0) c.neighbors.Add(grid[x, y - 1]);
                 if (x < sizeGrid.x - 1) c.neighbors.Add(grid[x + 1, y]);
                 if (y < sizeGrid.y - 1) c.neighbors.Add(grid[x, y + 1]);
 
-                c.SetWall(Random.value < 0.2); //permet de set la proba a 20%
+                //c.SetWall(Random.value < 0.2); //permet de set la proba a 20%
             }
         }
-        grid[0, 0].SetWall(false);
-        grid[sizeGrid.x - 1, sizeGrid.y - 1].SetWall(false);
+        //grid[0, 0].SetWall(false);
+        //grid[sizeGrid.x - 1, sizeGrid.y - 1].SetWall(false);
         PathFind(grid[0, 0], grid[sizeGrid.x - 1, sizeGrid.y - 1]);
     }
 

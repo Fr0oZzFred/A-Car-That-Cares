@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterEnzo : MonoBehaviour
 {
     public GridPathFindingEnzo grid;
+    public GetGrid gridGet;
     //public static CharacterEnzo globalCharacter; //pas faire ca marche mais c po bien
     CellEnzo currentCell;
     List<CellEnzo> goToList;
@@ -19,7 +20,7 @@ public class CharacterEnzo : MonoBehaviour
     void Start()
     {
         //globalCharacter = this;
-        currentCell = grid.grid[0, 0];
+        currentCell = gridGet.grid[0, 0];
         goToList = new List<CellEnzo>();
 
         stock = vehicle.stock;
