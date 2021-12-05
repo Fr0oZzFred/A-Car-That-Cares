@@ -37,14 +37,12 @@ public class PriorityHeap<T>{
         return res;
     }
     void GoDown(int node){
-        while (HasLeftChild(node))
-        {
+        while (HasLeftChild(node)){
             int minNode = LeftChild(node);
             if (HasRightChild(node) &&
                 heap[RightChild(node)].priority < heap[LeftChild(node)].priority)
                 minNode = RightChild(node);
-            if (heap[minNode].priority < heap[node].priority)
-            {
+            if (heap[minNode].priority < heap[node].priority){
                 Swap(minNode, node);
                 node = minNode;
             }
@@ -52,10 +50,8 @@ public class PriorityHeap<T>{
         }
     }
     void GoUp(int node){
-        while (!IsRoot(node))
-        {
-            if (heap[Parent(node)].priority > heap[node].priority)
-            {
+        while (!IsRoot(node)){
+            if (heap[Parent(node)].priority > heap[node].priority){
                 Swap(node, Parent(node));
                 node = Parent(node);
             }

@@ -14,7 +14,7 @@ public class CarBehaviour : MonoBehaviour{
     }
     void Update(){
         if (goToList.Count > 0){
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(goToList[0].transform.position.x, 1, goToList[0].transform.position.z), Time.deltaTime * 2);
+            transform.position = Vector3.MoveTowards(transform.position, goToList[0].transform.position, Time.deltaTime * 2);
             if (transform.position == goToList[0].transform.position){
                 currentCell = goToList[0];
                 goToList.RemoveAt(0);
