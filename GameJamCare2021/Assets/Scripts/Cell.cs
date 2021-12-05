@@ -4,6 +4,7 @@ using UnityEngine;
 public class Cell : MonoBehaviour{
     public GameObject trail;
     public bool house;
+    [HideInInspector] public bool eventRoad;
     [HideInInspector] public bool car;
     [System.NonSerialized] public List<Cell> neighbors;
     [System.NonSerialized] public Cell parent;
