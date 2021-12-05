@@ -19,7 +19,7 @@ public class GridPathFindingEnzo : MonoBehaviour
             {
                 GameObject go = Instantiate(cellPrefab);
                 go.name = "Cell [" + x + ";" + y + "]";
-                go.transform.position = new Vector3(x, 0, y); //go.transform.position = new Vector3(x * 1.1, 0, y *1.1); PERMET ASPECT GRID
+                go.transform.position = new Vector3(x * 2, 0, y * 2); //go.transform.position = new Vector3(x * 1.1, 0, y *1.1); PERMET ASPECT GRID
                 grid[x, y] = go.GetComponent<CellEnzo>();
             }
         }

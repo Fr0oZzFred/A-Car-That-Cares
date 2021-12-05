@@ -27,6 +27,7 @@ public class MapPathFinding : MonoBehaviour{
     }
     public List<Cell> PathFind(Cell start, Cell target)
     {
+        ResetMap();
         Debug.Log(start.name + " to " + target.name);
         PriorityHeap<Cell> frontier = new PriorityHeap<Cell>();
         start.node = frontier.Insert(start, 0);
@@ -40,6 +41,7 @@ public class MapPathFinding : MonoBehaviour{
                 if (neigh.visited) continue;
                 if (neigh.house) continue;
                 if (neigh.car) continue;
+                if (neigh.eventRoad) continue;
                 if (neigh.node == null){
                     neigh.node = frontier.Insert(neigh, current.priority + 1);
                     neigh.parent = cell;
@@ -58,8 +60,11 @@ public class MapPathFinding : MonoBehaviour{
             currentCell = currentCell.parent;
         }
         res.Reverse();
-        string way = "chemin : " + start.name;
-        for (int i = 0; i < res.Count; i++) way += " -> " + res[i].name;
+        string way = "chemin" + start.name;
+        for(int i = 0; i < res.Count; i++)
+        {
+            way += " -> " + res[i];
+        }
         Debug.Log(way);
         ResetMap();
         return res;

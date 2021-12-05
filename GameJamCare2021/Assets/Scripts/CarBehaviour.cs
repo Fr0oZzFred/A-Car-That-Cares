@@ -24,7 +24,6 @@ public class CarBehaviour : MonoBehaviour{
             }
         }
     }
-
     public void GoTo(Cell target){
         Cell start = currentCell;
         if (goToList.Count > 0) start = goToList[goToList.Count - 1];
