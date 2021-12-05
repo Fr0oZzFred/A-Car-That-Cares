@@ -1,9 +1,29 @@
 fileFormatVersion: 2
-guid: 0e6f3bcf0fddb9a4ead5010384ffd3b9
+guid: be9a04e428b788c4caa107bfaca369bf
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: colo chene
+    second: {fileID: 2100000, guid: f6a4d797c054abb4e9745104dc820bf6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: herbe
+    second: {fileID: 2100000, guid: 674d82611d94f244db8d40e1d5b8e173, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: maison
+    second: {fileID: 2100000, guid: 8157c09ebe849704bb9187eb323d4f86, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sapin
+    second: {fileID: 2100000, guid: 3e303bf39d6cf7942b3f67faf67f398b, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

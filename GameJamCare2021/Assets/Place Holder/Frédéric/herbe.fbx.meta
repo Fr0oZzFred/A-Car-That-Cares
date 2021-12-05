@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 653e73bca0d1e9a4fadde38b1bf21fbc
+guid: 005f413ff099f7f469ad8b45439fdf35
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: herbe
+    second: {fileID: 2100000, guid: 674d82611d94f244db8d40e1d5b8e173, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
