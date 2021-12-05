@@ -24,8 +24,8 @@ public class MouseManager : MonoBehaviour{
                 if (selection == CarBehaviour.globalCar){
                     isCar = true;
                     actualCar = selection.GetComponent<CarBehaviour>();
-                    Debug.Log(hit.transform.gameObject);
-                }
+                }else isCar = false;
+                Debug.Log(hit.transform.gameObject);
             }
         }
     }
