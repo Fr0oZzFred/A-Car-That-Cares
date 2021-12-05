@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour {
         InGame = 1,
         Pause = 2,
         GameOver = 3,
+        Credit = 4,
     }
     public static GameState GameStates { get; private set; }
 
@@ -60,7 +61,10 @@ public class GameManager : MonoBehaviour {
                 //defaite
             }
         }
-        timerDay -= Time.deltaTime;
+        if(GameStates == GameState.InGame) {
+            timerDay -= Time.deltaTime;
+            UIManager.Instance.TimerUpdate(timerDay);
+        }
     }
 
     void ChangeGameState(GameState gameState) {
@@ -76,6 +80,8 @@ public class GameManager : MonoBehaviour {
                 break;
             case GameState.GameOver:
                 break;
+            case GameState.Credit:
+                break;
         }
         if (enabledDebug) DebugGameState();
     }
@@ -90,6 +96,10 @@ public class GameManager : MonoBehaviour {
             ChangeGameState(GameState.Pause);
         else if (GameStates == GameState.Pause)
             ChangeGameState(GameState.InGame);
+    }
+
+    public void QuitGame() {
+        Application.Quit();
     }
     #region Debug
     void DebugGameState() {

@@ -26,8 +26,9 @@ public class UIManager : MonoBehaviour {
         textStock.text = 0.ToString(); // Stock
     }
 
-    void TimerUpdate() {
-        textTimer.text = 0.ToString(); // Timer
+    public void TimerUpdate(float timer) {
+        timer = timer / 60;
+        textTimer.text = Math.Round(timer, 2).ToString(); // Timer
     }
 
     public void ChangeState(GameManager.GameState oldGameState) {
