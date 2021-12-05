@@ -8,36 +8,33 @@ public class MapPathFinding : MonoBehaviour{
     void Awake()
     {
         map = new Cell[sizeGrid.x, sizeGrid.y];
-        for (int i = 0; i < sizeGrid.y; i++)
-        {
-            for (int j = 0; j < sizeGrid.x; j++)
-            {
-                map[j, i] = cells[j + i * sizeGrid.x];
-                map[j, i].name += j + ", " + i;
+        for (int x = 0; x < sizeGrid.x; x++){
+            for (int y = 0; y < sizeGrid.y; y++){
+                map[x, y] = cells[y + x * sizeGrid.y];
+                map[x, y].name = "Cell (" + x + ", " + y + ")";
             }
         }
-        for (int i = 0; i < sizeGrid.y; i++)
-        {
-            for (int j = 0; j < sizeGrid.x; j++)
-            {
-                Cell c = map[j, i];
+        for (int y = 0; y < sizeGrid.y; y++){
+            for (int x = 0; x < sizeGrid.x; x++){
+                Cell c = map[x, y];
                 c.neighbors = new List<Cell>();
-                if (j < sizeGrid.x - 1) c.neighbors.Add(map[j + 1, i]);
-                if (j > 0) c.neighbors.Add(map[j - 1, i]);
-                if (i < sizeGrid.y - 1) c.neighbors.Add(map[j, i + 1]);
-                if (i > 0) c.neighbors.Add(map[j, i - 1]);
+                if (x < sizeGrid.x - 1) c.neighbors.Add(map[x + 1, y]);
+                if (x > 0)              c.neighbors.Add(map[x - 1, y]);
+                if (y < sizeGrid.y - 1) c.neighbors.Add(map[x, y + 1]);
+                if (y > 0)              c.neighbors.Add(map[x, y - 1]);
             }
         }
-        PathFind(map[0, 0], map[sizeGrid.x - 1, sizeGrid.y - 1]);
     }
     public List<Cell> PathFind(Cell start, Cell target)
     {
+        Debug.Log(start.name + " to " + target.name);
         PriorityHeap<Cell> frontier = new PriorityHeap<Cell>();
         start.node = frontier.Insert(start, 0);
         while (!frontier.IsEmpty()){
             Node<Cell> current = frontier.PopMin();
             Cell cell = current.content;
             cell.visited = true;
+            cell.SetTrail();
             if (cell == target) break;
             foreach (Cell neigh in current.content.neighbors){
                 if (neigh.visited) continue;
@@ -61,6 +58,21 @@ public class MapPathFinding : MonoBehaviour{
             currentCell = currentCell.parent;
         }
         res.Reverse();
+        string way = "chemin : " + start.name;
+        for (int i = 0; i < res.Count; i++) way += " -> " + res[i].name;
+        Debug.Log(way);
+        ResetMap();
         return res;
+    }
+    void ResetMap(){
+        for (int y = 0; y < sizeGrid.y; y++){
+            for (int x = 0; x < sizeGrid.x; x++){
+                Cell c = map[x, y];
+                c.visited = false;
+                c.RemoveTrail();
+                c.node = null;
+                c.parent = null;
+            }
+        }
     }
 }
