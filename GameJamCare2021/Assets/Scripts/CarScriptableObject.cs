@@ -11,5 +11,4 @@ public class CarScriptableObject : ScriptableObject
     public float speed;
 
     public Material mat;
-    public Sprite sprite;
 }

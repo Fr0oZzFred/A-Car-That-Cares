@@ -7,20 +7,31 @@ public class CharacterEnzo : MonoBehaviour
     public GridPathFindingEnzo grid;
     //public static CharacterEnzo globalCharacter; //pas faire ca marche mais c po bien
     CellEnzo currentCell;
-    [SerializeField] List<CellEnzo> goToList;
+    List<CellEnzo> goToList;
 
+    [SerializeField] CarScriptableObject vehicle;
+
+    int stock;
+    float speed;
+
+    Material material;
 
     void Start()
     {
         //globalCharacter = this;
         currentCell = grid.grid[0, 0];
         goToList = new List<CellEnzo>();
+
+        stock = vehicle.stock;
+        speed = vehicle.speed;
+
+        material = vehicle.mat;
     }
 
     public void GoTo(CellEnzo target)
     {
         CellEnzo start = currentCell;
-        if (goToList.Count > 0) start = goToList[goToList.Count - 1];
+        goToList.Clear();
         goToList.AddRange(grid.PathFind(start, target));
     }
 
