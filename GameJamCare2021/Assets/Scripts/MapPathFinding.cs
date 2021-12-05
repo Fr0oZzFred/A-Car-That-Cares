@@ -42,7 +42,6 @@ public class MapPathFinding : MonoBehaviour{
                 if (neigh.house) continue;
                 if (neigh.car) continue;
                 if (neigh.eventRoad) continue;
-                Debug.Log(neigh.eventRoad);
                 if (neigh.node == null){
                     neigh.node = frontier.Insert(neigh, current.priority + 1);
                     neigh.parent = cell;
@@ -61,6 +60,12 @@ public class MapPathFinding : MonoBehaviour{
             currentCell = currentCell.parent;
         }
         res.Reverse();
+        string way = "chemin" + start.name;
+        for(int i = 0; i < res.Count; i++)
+        {
+            way += " -> " + res[i];
+        }
+        Debug.Log(way);
         ResetMap();
         return res;
     }
