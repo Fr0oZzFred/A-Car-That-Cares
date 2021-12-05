@@ -6,7 +6,7 @@ public class MaisonEnzoTest : MonoBehaviour
 {
     void Start()
     {
-        MaisonManager.Instance.AddMaison(this);
+        //MaisonManager.Instance.AddMaison(this);
     }
 
     public void Demande()
