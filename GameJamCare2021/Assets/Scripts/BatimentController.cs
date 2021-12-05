@@ -10,14 +10,21 @@ public class BatimentController : MonoBehaviour
     [SerializeField]
     private LayerMask layers = default;
     private bool collide;
+    private bool demande = false;
+    private string selection;
 
     RaycastHit hit;
 
+    private void Start()
+    {
+        MaisonManager.Instance.AddMaison(this);
+    }
+
     void Update()
     {
-        if (MouseManager.Instance.isCar == true)
+        if (MouseManager.Instance.selection == null)
         {
-            car = CarBehaviour.globalCar;
+            car = null;
         }
 
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * rayDistance, Color.red);
@@ -33,17 +40,35 @@ public class BatimentController : MonoBehaviour
         Collide();
     }
 
+    private void OnMouseDown()
+    {
+        if (MouseManager.Instance.isCar == true)
+        {
+            car = CarBehaviour.globalCar;
+        }
+    }
+
     private void Collide()
     {
         if (collide == true)
         {
-            string selection = hit.transform.gameObject.name;
+            selection = hit.transform.gameObject.name;
 
-            if (selection == car.name)
+            if (car != null && selection == car.name && demande == true)
             {
                 Debug.Log("give");
+                demande = false;
+                transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
             }
         }
     }
-}
 
+    public void Demande()
+    {
+        if (demande == false)
+        {
+            demande = true;
+            transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
+        }
+    }
+}
