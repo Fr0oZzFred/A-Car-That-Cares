@@ -10,16 +10,17 @@ public class BatimentController : MonoBehaviour
     [SerializeField]
     private LayerMask layers = default;
     private bool collide;
+    private string carName;
 
     RaycastHit hit;
 
-    private void Start()
-    {
-
-    }
-
     void Update()
     {
+        if (MouseManager.Instance.isCar == true)
+        {
+            carName = CarBehaviour.globalCar.name;
+        }
+
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * rayDistance, Color.red);
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, rayDistance, layers))
         {
@@ -29,6 +30,8 @@ public class BatimentController : MonoBehaviour
         {
             collide = false;
         }
+
+        Collide();
     }
 
     private void Collide()
@@ -37,9 +40,9 @@ public class BatimentController : MonoBehaviour
         {
             string selection = hit.transform.gameObject.name;
 
-            if (selection == car.name)
+            if (selection == carName)
             {
-
+                Debug.Log("give");
             }
         }
     }
