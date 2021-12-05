@@ -10,7 +10,8 @@ public class BatimentController : MonoBehaviour
     [SerializeField]
     private LayerMask layers = default;
     private bool collide;
-    private bool demande = false;
+    private bool demande;
+    private bool houseSelected;
     private string selection;
 
     RaycastHit hit;
@@ -27,8 +28,8 @@ public class BatimentController : MonoBehaviour
             car = null;
         }
 
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * rayDistance, Color.red);
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, rayDistance, layers))
+        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * rayDistance, Color.red);
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out hit, rayDistance, layers))
         {
             collide = true;
         }
@@ -38,6 +39,7 @@ public class BatimentController : MonoBehaviour
         }
 
         Collide();
+        Debug.Log(MouseManager.Instance.isCar);
     }
 
     private void OnMouseDown()
@@ -45,6 +47,10 @@ public class BatimentController : MonoBehaviour
         if (MouseManager.Instance.isCar == true)
         {
             car = CarBehaviour.globalCar;
+        }
+        if (demande == true)
+        {
+            houseSelected = true;
         }
     }
 
@@ -54,11 +60,12 @@ public class BatimentController : MonoBehaviour
         {
             selection = hit.transform.gameObject.name;
 
-            if (car != null && selection == car.name && demande == true)
+            if (car != null && selection == car.name && demande == true && houseSelected == true)
             {
                 Debug.Log("give");
                 demande = false;
                 transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
+                houseSelected = false;
             }
         }
     }
