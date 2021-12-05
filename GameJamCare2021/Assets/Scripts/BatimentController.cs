@@ -13,13 +13,13 @@ public class BatimentController : MonoBehaviour
 
     RaycastHit hit;
 
-    private void Start()
-    {
-
-    }
-
     void Update()
     {
+        if (MouseManager.Instance.isCar == true)
+        {
+            car = CarBehaviour.globalCar;
+        }
+
         Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * rayDistance, Color.red);
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, rayDistance, layers))
         {
@@ -29,6 +29,8 @@ public class BatimentController : MonoBehaviour
         {
             collide = false;
         }
+
+        Collide();
     }
 
     private void Collide()
@@ -39,7 +41,7 @@ public class BatimentController : MonoBehaviour
 
             if (selection == car.name)
             {
-
+                Debug.Log("give");
             }
         }
     }

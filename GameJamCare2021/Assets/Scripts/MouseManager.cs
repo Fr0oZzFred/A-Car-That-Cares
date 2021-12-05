@@ -19,19 +19,13 @@ public class MouseManager : MonoBehaviour{
                 Debug.Log(hit.transform.gameObject + "delete");
                 isCar = false;
             }
-            /*else if (isCar && hit.transform.gameObject == Cell.cell)
-            {
-                isCar = false;
-                actualCar.GoTo(hit.transform.gameObject.GetComponent<Cell>());
-                Debug.Log(hit.transform.gameObject);
-            }*/
             else {
                 selection = hit.transform.gameObject;
                 if (selection == CarBehaviour.globalCar){
                     isCar = true;
                     actualCar = selection.GetComponent<CarBehaviour>();
-                    Debug.Log(hit.transform.gameObject);
-                }
+                }else isCar = false;
+                Debug.Log(hit.transform.gameObject);
             }
         }
     }
