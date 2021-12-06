@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2009447586615337584}
   - component: {fileID: 3192250023768632789}
   - component: {fileID: 840432819617847583}
+  - component: {fileID: 7553552898623759829}
+  - component: {fileID: 4387441145216439425}
   m_Layer: 0
   m_Name: herbe
   m_TagString: Untagged
@@ -79,3 +81,29 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &7553552898623759829
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200540538777467082}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2.0000005, z: 0.19576748}
+  m_Center: {x: 0, y: 0, z: 0.09788374}
+--- !u!114 &4387441145216439425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200540538777467082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de66c238efd32a4a93216fb2f85b059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsWall: 1

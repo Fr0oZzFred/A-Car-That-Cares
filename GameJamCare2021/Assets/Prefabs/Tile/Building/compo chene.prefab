@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 942785732214569618}
   - component: {fileID: 4231880847616881975}
   - component: {fileID: 2116232763591574013}
+  - component: {fileID: 1289625039371760968}
   m_Layer: 0
   m_Name: compo chene
   m_TagString: Untagged
@@ -80,3 +81,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1289625039371760968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 458982385556709416}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de66c238efd32a4a93216fb2f85b059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsWall: 1

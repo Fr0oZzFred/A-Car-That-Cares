@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6878765511335660909}
   - component: {fileID: 7555231876631347912}
   - component: {fileID: 5709829944473892354}
+  - component: {fileID: 2565669829529438073}
+  - component: {fileID: 3668737900808282314}
   m_Layer: 0
   m_Name: maison chene 2
   m_TagString: Untagged
@@ -81,3 +83,29 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &2565669829529438073
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6070175432709150679}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.800366, y: 5.869647, z: 3.3450673}
+  m_Center: {x: -0.38147944, y: -0.41610473, z: 1.6636258}
+--- !u!114 &3668737900808282314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6070175432709150679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de66c238efd32a4a93216fb2f85b059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsWall: 1

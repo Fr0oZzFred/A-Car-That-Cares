@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7026142061808816628}
   - component: {fileID: 6209906914273566289}
   - component: {fileID: 8199632316798364315}
+  - component: {fileID: 5612326879731671108}
   m_Layer: 0
   m_Name: compo arbres
   m_TagString: Untagged
@@ -81,3 +82,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &5612326879731671108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7694978676873218894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de66c238efd32a4a93216fb2f85b059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsWall: 1

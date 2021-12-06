@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6238759849126877967}
   - component: {fileID: 7006295427442169002}
   - component: {fileID: 5106989463476805728}
+  - component: {fileID: 979353620008801698}
+  - component: {fileID: 3803708813193026822}
   m_Layer: 0
   m_Name: route
   m_TagString: Untagged
@@ -79,3 +81,29 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &979353620008801698
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6764221560986075573}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.02, y: 0.020000005, z: 0.0020000008}
+  m_Center: {x: 0, y: 0, z: 0.0010000004}
+--- !u!114 &3803708813193026822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6764221560986075573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3de66c238efd32a4a93216fb2f85b059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsWall: 0
