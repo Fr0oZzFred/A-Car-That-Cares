@@ -39,7 +39,6 @@ public class BatimentController : MonoBehaviour
         }
 
         Collide();
-        Debug.Log(MouseManager.Instance.isCar);
     }
 
     private void OnMouseDown()
