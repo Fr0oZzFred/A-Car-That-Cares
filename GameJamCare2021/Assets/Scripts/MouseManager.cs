@@ -6,6 +6,7 @@ public class MouseManager : MonoBehaviour
 {
     public Character selected = null;
     public string selectedName = "";
+    public bool isCar = false;
 
     public static MouseManager Instance { get; private set; }
     private void Awake()
