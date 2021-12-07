@@ -7,12 +7,8 @@ public class MouseManager : MonoBehaviour{
     [System.NonSerialized] public GameObject selection;
     [HideInInspector] public bool isCar;
     [HideInInspector] public CarBehaviour actualCar;
-    public EventRoad eventRoad;
-    float t = 0;
-    int action;
     void Awake(){
         _instance = this;
-        action = Random.Range(10, 15);
     }
     void Update(){
         if (Input.GetMouseButtonDown(0)){
@@ -31,12 +27,6 @@ public class MouseManager : MonoBehaviour{
             {
                 selection = hit.transform.gameObject;
             }
-        }
-        t += Time.deltaTime;
-        if (t > action){
-            eventRoad.BlockingRoad();
-            t = 0;
-            action = Random.Range(10, 15);
         }
     }
 }

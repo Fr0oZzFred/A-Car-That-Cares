@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
     #region Declaration
-    float timerDay;
+    public float timerDay;
     int GameDuration = 10;
     int dayCount = 0;
     int deliver;
