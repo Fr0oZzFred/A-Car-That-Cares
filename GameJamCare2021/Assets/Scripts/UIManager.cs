@@ -31,10 +31,13 @@ public class UIManager : MonoBehaviour {
         int timerInt = (int)timer;
         textTimer.text = $"{timerInt} : {(int)(Math.Round(timer - timerInt,2)*60)}"; // Timer fix quand 0.01
     }
-    public void DisplayStock() {
+    public void DisplayStock(Sprite carImage, int stockMax, int stock) {
         foreach(Transform t in stockPanel.transform) {
             if(t.GetComponent<Image>() != null) t.gameObject.SetActive(false);
         }
+    }
+    public void UpdateCarList() {
+        //Gestionnaire
     }
 
     public void ChangeState(GameManager.GameState oldGameState) {
@@ -43,10 +46,5 @@ public class UIManager : MonoBehaviour {
     }
 
     #region Debug
-    private void Update() {
-        if(enabledDebug && Input.GetKeyDown(KeyCode.S)){
-            DisplayStock();
-        }
-    }
     #endregion
 }

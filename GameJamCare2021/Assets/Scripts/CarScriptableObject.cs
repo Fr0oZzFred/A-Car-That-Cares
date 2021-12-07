@@ -7,8 +7,9 @@ public class CarScriptableObject : ScriptableObject
 {
     public new string name;
 
-    public int stock;
+    public int stockMax;
     public float speed;
 
     public Material mat;
+    public Sprite carImage;
 }

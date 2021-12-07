@@ -14,10 +14,10 @@ public class Character : MonoBehaviour
     Vector3 posB = new Vector3();
 
     [SerializeField] CarScriptableObject vehicle;
-
-    int stock;
+    int stockMax;
+    int actualStock;
     float speed;
-
+    Sprite carImage; 
     Material material;
 
     void Start()
@@ -26,10 +26,12 @@ public class Character : MonoBehaviour
         currentCell = GetGrid.grid[13, 10];
         goToList = new List<Cell>();
 
-        stock = vehicle.stock;
+        stockMax = vehicle.stockMax;
         speed = vehicle.speed;
 
+        carImage = vehicle.carImage;
         material = vehicle.mat;
+        actualStock = stockMax;
     }
 
     public void GoTo(Cell target)
@@ -66,6 +68,6 @@ public class Character : MonoBehaviour
         MouseManager.Instance.selected = this;
         MouseManager.Instance.selectedName = this.gameObject.name;
         MouseManager.Instance.isCar = true;
-        Debug.Log("Touché");
+        UIManager.Instance.DisplayStock(carImage,stockMax,actualStock); //Envoyer infos au UIManager
     }
 }

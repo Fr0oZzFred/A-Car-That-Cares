@@ -5,7 +5,7 @@ using UnityEngine;
 public class VehicleCenterManager : MonoBehaviour
 {
     [SerializeField]GameObject CarPrefab;
-    [SerializeField]public List<CarBehaviour> vehicleList;
+    public List<CarBehaviour> vehicleList;
 
     public static VehicleCenterManager Instance { get; private set; }
 
@@ -29,5 +29,6 @@ public class VehicleCenterManager : MonoBehaviour
         car.gameObject.name = "voiture" + vehicleList.Count;
         CarBehaviour script = car.GetComponent<CarBehaviour>();
         vehicleList.Add(script);
+        UIManager.Instance.UpdateCarList();
     }
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Car
   m_EditorClassIdentifier: 
   name: Voiture
-  stock: 5
+  stockMax: 0
   speed: 5
   mat: {fileID: 2100000, guid: 092fa7e9f3f873e41aaae4c03686ea45, type: 2}
+  carImage: {fileID: 0}
