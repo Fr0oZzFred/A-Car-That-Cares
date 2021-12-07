@@ -5,7 +5,7 @@ using UnityEngine;
 public class GridPathFindingEnzo : MonoBehaviour
 {
     public GameObject cellPrefab;
-    public Vector2Int sizeGrid;
+    Vector2Int sizeGrid;
     public CellEnzo[,] grid; //doit pas etre public mais on avait pas le temps
     //public GetGrid getGrid;
 
@@ -14,7 +14,6 @@ public class GridPathFindingEnzo : MonoBehaviour
     void Start() //Awake
     {
         grid = GetGrid.grid;
-        Debug.Log(GetGrid.grid);
         sizeGrid.x = GetGrid.grid.GetLength(0);
         sizeGrid.y = GetGrid.grid.GetLength(1);
         /*
@@ -56,7 +55,7 @@ public class GridPathFindingEnzo : MonoBehaviour
             {
                 CellEnzo c = GetGrid.grid[x, y];
                 c.visited = false;
-                //c.SetMaterial(basic);
+                c.SetMaterial(basic, false);
                 c.node = null;
                 c.parent = null;
             }
@@ -99,12 +98,12 @@ public class GridPathFindingEnzo : MonoBehaviour
         while (currentCell.parent != null)
         {
             res.Add(currentCell);
-            //currentCell.SetMaterial(chosen);
+            currentCell.SetMaterial(chosen,true);
             currentCell = currentCell.parent;
-            /*if (currentCell.parent == null)
+            if (currentCell.parent == null)
             {
-                currentCell.SetMaterial(chosen);
-            }*/
+                currentCell.SetMaterial(chosen,false);
+            }
         }
         res.Reverse();
         return res; //note pour a pathfinding on fait current.priority + 1 + distance a vol d'oiseau

@@ -41,18 +41,17 @@ public class CharacterEnzo : MonoBehaviour
 
     void Update()
     {
-        if (goToList.Count > 0)
-        {
+        if (goToList.Count > 0) {
             transform.position = Vector3.MoveTowards(
                 transform.position,
                 goToList[0].transform.position,
                 Time.deltaTime * 5);
-            if (transform.position == goToList[0].transform.position)
-            {
+            if (transform.position == goToList[0].transform.position) {
+                currentCell.SetMaterial(material, false);
                 currentCell = goToList[0];
                 goToList.RemoveAt(0);
             }
-        }
+        } else if (goToList.Count == 0) currentCell.SetMaterial(material, false);
 
         //script direction
         if (posA != null && posA != transform.position)

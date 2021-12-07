@@ -94,3 +94,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsWall: 1
+  choosenGO: {fileID: 6098826377707719571, guid: 76d6c23bbc5d51145ba6a98727cf330d,
+    type: 3}

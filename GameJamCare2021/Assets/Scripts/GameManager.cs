@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
     #region Declaration
@@ -12,6 +14,9 @@ public class GameManager : MonoBehaviour {
     public int[] dayTimeTwo = new int[10];
     public int[] objectiveArray = new int[10];
     int objective;
+    [Header("Camera")]
+    public CinemachineVirtualCamera camMainMenu;
+    public CinemachineVirtualCamera camInGame;
     [Header("Debug")]
     public bool enabledDebug;
     #endregion
@@ -73,8 +78,10 @@ public class GameManager : MonoBehaviour {
         UIManager.Instance.ChangeState(oldGameState);
         switch (GameStates) {
             case GameState.MainMenu:
+                camMainMenu.Priority = camInGame.Priority + 1;
                 break;
             case GameState.InGame:
+                camInGame.Priority = camMainMenu.Priority + 1;
                 break;
             case GameState.Pause:
                 break;
@@ -98,6 +105,9 @@ public class GameManager : MonoBehaviour {
             ChangeGameState(GameState.InGame);
     }
 
+    public void Restart() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // à changer adapter
+    }
     public void QuitGame() {
         Application.Quit();
     }
