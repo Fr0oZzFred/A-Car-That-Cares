@@ -65,6 +65,7 @@ public class Character : MonoBehaviour
     {
         MouseManager.Instance.selected = this;
         MouseManager.Instance.selectedName = this.gameObject.name;
+        MouseManager.Instance.isCar = true;
         Debug.Log("Touché");
     }
 }
