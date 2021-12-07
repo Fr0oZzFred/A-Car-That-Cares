@@ -3,25 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 public class EventRoad : MonoBehaviour{
     public MapPathFinding map;
-    List<Cell> road = new List<Cell>();
+    List<CellEnzo> road = new List<CellEnzo>();
+    float t = 0;
+    int action;
     void Start(){
-        for (int i = 0; i < map.map.Length; i++)
+        for (int i = 0; i < 20; i++){
+            for(int j = 0; j < 25; j++)
+            if (!GetGrid.grid[i, j].IsWall) road.Add(GetGrid.grid[i, j]);
+        }
+        action = Random.Range((int)GameManager.Instance.timerDay + 10, (int)GameManager.Instance.timerDay + 15);
+    }
+    private void Update(){
+        t += Time.deltaTime;
+        if (t > action)
         {
-            if (!map.cells[i].house) road.Add(map.cells[i]);
+            BlockingRoad();
+            t = 0;
+            action = Random.Range((int)GameManager.Instance.timerDay + 10, (int)GameManager.Instance.timerDay + 15);
         }
     }
     public void BlockingRoad(){
-        Cell eventCell = road[Random.Range(0, road.Count - 1)];
-        Debug.Log(eventCell.name);
+        CellEnzo eventCell = road[Random.Range(0, road.Count)];
         int end = Random.Range(8, 10);
         float t = 0;
         while(t < end)
         {
             t += Time.deltaTime;
-            eventCell.eventRoad = true;
+            eventCell.IsWall= true;
         }
-        Debug.Log(eventCell.eventRoad);
-        eventCell.eventRoad = false;
-
+        eventCell.IsWall = false;
     }
 }
