@@ -8,6 +8,7 @@ using TMPro;
 public class UIManager : MonoBehaviour {
     #region Declaration
     public List<GameObject> uiElement;
+    public GameObject stockPanel;
 
     [Header("Text")]
     public TextMeshProUGUI textStock;
@@ -21,7 +22,6 @@ public class UIManager : MonoBehaviour {
     private void Awake() {
         Instance = this;
     }
-
     void UpdateScore() {
         textStock.text = 0.ToString(); // Stock
     }
@@ -30,6 +30,11 @@ public class UIManager : MonoBehaviour {
         timer = timer / 60;
         textTimer.text = Math.Round(timer, 2).ToString(); // Timer
     }
+    public void DisplayStock() {
+        foreach(Transform t in stockPanel.transform) {
+            if(t.GetComponent<Image>() != null) t.gameObject.SetActive(false);
+        }
+    }
 
     public void ChangeState(GameManager.GameState oldGameState) {
         uiElement[(int)oldGameState].SetActive(false);
@@ -37,5 +42,10 @@ public class UIManager : MonoBehaviour {
     }
 
     #region Debug
+    private void Update() {
+        if(enabledDebug && Input.GetKeyDown(KeyCode.S)){
+            DisplayStock();
+        }
+    }
     #endregion
 }
