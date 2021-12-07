@@ -28,7 +28,8 @@ public class UIManager : MonoBehaviour {
 
     public void TimerUpdate(float timer) {
         timer = timer / 60;
-        textTimer.text = Math.Round(timer, 2).ToString(); // Timer
+        int timerInt = (int)timer;
+        textTimer.text = $"{timerInt} : {(int)(Math.Round(timer - timerInt,2)*60)}"; // Timer
     }
     public void DisplayStock() {
         foreach(Transform t in stockPanel.transform) {
