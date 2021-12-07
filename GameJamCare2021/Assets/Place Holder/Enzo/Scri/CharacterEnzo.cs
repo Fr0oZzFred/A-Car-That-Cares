@@ -10,6 +10,9 @@ public class CharacterEnzo : MonoBehaviour
     CellEnzo currentCell;
     List<CellEnzo> goToList;
 
+    Vector3 posA = new Vector3();
+    Vector3 posB = new Vector3();
+
     [SerializeField] CarScriptableObject vehicle;
 
     int stock;
@@ -50,6 +53,14 @@ public class CharacterEnzo : MonoBehaviour
                 goToList.RemoveAt(0);
             }
         }
+
+        //script direction
+        if (posA != null && posA != transform.position)
+            posB = posA;
+        posA = transform.position;
+
+        Vector3 dir = (posB - posA).normalized;
+        transform.rotation = Quaternion.LookRotation(dir);
     }
     private void OnMouseDown()
     {
