@@ -15,8 +15,8 @@ public class GridPathFindingEnzo : MonoBehaviour
     {
         grid = GetGrid.grid;
         Debug.Log(GetGrid.grid);
-        sizeGrid.x = GetGrid.grid.GetLength(1);
-        sizeGrid.y = GetGrid.grid.GetLength(0);
+        sizeGrid.x = GetGrid.grid.GetLength(0);
+        sizeGrid.y = GetGrid.grid.GetLength(1);
         /*
         for (int y = 0; y < sizeGrid.y; y++)
         {
@@ -54,7 +54,7 @@ public class GridPathFindingEnzo : MonoBehaviour
         {
             for (int x = 0; x < sizeGrid.x; x++)
             {
-                CellEnzo c = GetGrid.grid[y, x];
+                CellEnzo c = GetGrid.grid[x, y];
                 c.visited = false;
                 //c.SetMaterial(basic);
                 c.node = null;

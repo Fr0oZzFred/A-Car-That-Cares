@@ -20,7 +20,7 @@ public class CharacterEnzo : MonoBehaviour
     void Start()
     {
         //globalCharacter = this;
-        currentCell = GetGrid.grid[0, 0];
+        currentCell = GetGrid.grid[13, 10];
         goToList = new List<CellEnzo>();
 
         stock = vehicle.stock;
