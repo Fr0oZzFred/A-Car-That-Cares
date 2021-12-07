@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3192250023768632789}
   - component: {fileID: 840432819617847583}
   - component: {fileID: 7553552898623759829}
-  - component: {fileID: 4387441145216439425}
+  - component: {fileID: 6914333574283102025}
   m_Layer: 0
   m_Name: herbe
   m_TagString: Untagged
@@ -94,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2.0000005, z: 0.19576748}
   m_Center: {x: 0, y: 0, z: 0.09788374}
---- !u!114 &4387441145216439425
+--- !u!114 &6914333574283102025
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,9 +103,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1200540538777467082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de66c238efd32a4a93216fb2f85b059, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b73546b23404c24190698a54d07dc00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsWall: 1
-  choosenGO: {fileID: 6098826377707719571, guid: 76d6c23bbc5d51145ba6a98727cf330d,
-    type: 3}
+  choosenGO: {fileID: 0}

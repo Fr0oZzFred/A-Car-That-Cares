@@ -326,7 +326,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8558374997675789585}
   - component: {fileID: 2896998278803211124}
-  - component: {fileID: 8740478068822995078}
+  - component: {fileID: 7639192433467047842}
   m_Layer: 0
   m_Name: maison chene
   m_TagString: Untagged
@@ -365,7 +365,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 1.1992569, z: 2}
   m_Center: {x: 0, y: 0.6009846, z: 0}
---- !u!114 &8740478068822995078
+--- !u!114 &7639192433467047842
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -374,9 +374,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 9047349140756666283}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de66c238efd32a4a93216fb2f85b059, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b73546b23404c24190698a54d07dc00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsWall: 1
-  choosenGO: {fileID: 6098826377707719571, guid: 76d6c23bbc5d51145ba6a98727cf330d,
-    type: 3}
+  choosenGO: {fileID: 0}

@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-public class Node<T>{
+public class NodeQuentin<T>{
     public T content;
     public int priority, index;
 }
-public class PriorityHeap<T>{
-    List<Node<T>> heap;
-    public PriorityHeap(){
-        heap = new List<Node<T>>();
+public class PriorityHeapQuentin<T>{
+    List<NodeQuentin<T>> heap;
+    public PriorityHeapQuentin(){
+        heap = new List<NodeQuentin<T>>();
     }
-    public Node<T> Insert(T content, int priority){
-        Node<T> newElem = new Node<T>();
+    public NodeQuentin<T> Insert(T content, int priority){
+        NodeQuentin<T> newElem = new NodeQuentin<T>();
         newElem.content = content;
         newElem.priority = priority;
         newElem.index = heap.Count;
@@ -18,7 +18,7 @@ public class PriorityHeap<T>{
         GoUp(heap.Count - 1);
         return newElem;
     }
-    public void ChangePriority(Node<T> node, int newPrio){
+    public void ChangePriority(NodeQuentin<T> node, int newPrio){
         if (node.index >= heap.Count) throw new IndexOutOfRangeException();
         if (heap[node.index] != node) throw new InvalidOperationException();
         int oldPrio = node.priority;
@@ -26,11 +26,11 @@ public class PriorityHeap<T>{
         if (oldPrio > newPrio) GoUp(node.index);
         else if (newPrio > oldPrio) GoDown(node.index);
     }
-    public Node<T> GetMinNode(){
+    public NodeQuentin<T> GetMinNode(){
         return heap[0];
     }
-    public Node<T> PopMin(){
-        Node<T> res = GetMinNode();
+    public NodeQuentin<T> PopMin(){
+        NodeQuentin<T> res = GetMinNode();
         Swap(0, heap.Count - 1);
         heap.RemoveAt(heap.Count - 1);
         GoDown(0);
@@ -59,7 +59,7 @@ public class PriorityHeap<T>{
         }
     }
     void Swap(int node1, int node2){
-        Node<T> tmp = heap[node1];
+        NodeQuentin<T> tmp = heap[node1];
         heap[node1] = heap[node2];
         heap[node2] = tmp;
         heap[node1].index = node1;

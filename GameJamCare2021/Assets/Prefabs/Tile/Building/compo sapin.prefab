@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 631603758111796056}
   - component: {fileID: 4570084693793383677}
   - component: {fileID: 1767879015773884471}
-  - component: {fileID: 5949001579887162287}
+  - component: {fileID: 1949884399635728558}
   m_Layer: 0
   m_Name: compo sapin
   m_TagString: Untagged
@@ -82,7 +82,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &5949001579887162287
+--- !u!114 &1949884399635728558
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -91,9 +91,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 254515952656216546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de66c238efd32a4a93216fb2f85b059, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b73546b23404c24190698a54d07dc00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsWall: 1
-  choosenGO: {fileID: 6098826377707719571, guid: 76d6c23bbc5d51145ba6a98727cf330d,
-    type: 3}
+  choosenGO: {fileID: 0}

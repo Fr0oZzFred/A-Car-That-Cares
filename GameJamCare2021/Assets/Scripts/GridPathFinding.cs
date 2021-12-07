@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridPathFindingEnzo : MonoBehaviour
+public class GridPathFinding : MonoBehaviour
 {
     public GameObject cellPrefab;
     Vector2Int sizeGrid;
-    public CellEnzo[,] grid; //doit pas etre public mais on avait pas le temps
+    public Cell[,] grid; //doit pas etre public mais on avait pas le temps
     //public GetGrid getGrid;
 
     public Material basic, visited, chosen;
@@ -32,8 +32,8 @@ public class GridPathFindingEnzo : MonoBehaviour
         {
             for (int x = 0; x < sizeGrid.x; x++)
             {
-                CellEnzo c = grid[x, y];
-                c.neighbors = new List<CellEnzo>();
+                Cell c = grid[x, y];
+                c.neighbors = new List<Cell>();
                 if (x > 0) c.neighbors.Add(grid[x - 1, y]);
                 if (y > 0) c.neighbors.Add(grid[x, y - 1]);
                 if (x < sizeGrid.x - 1) c.neighbors.Add(grid[x + 1, y]);
@@ -53,7 +53,7 @@ public class GridPathFindingEnzo : MonoBehaviour
         {
             for (int x = 0; x < sizeGrid.x; x++)
             {
-                CellEnzo c = GetGrid.grid[x, y];
+                Cell c = GetGrid.grid[x, y];
                 c.visited = false;
                 c.SetMaterial(basic, false);
                 c.node = null;
@@ -62,20 +62,20 @@ public class GridPathFindingEnzo : MonoBehaviour
         }
     }
 
-    public List<CellEnzo> PathFind(CellEnzo start, CellEnzo target)
+    public List<Cell> PathFind(Cell start, Cell target)
     {
         ResetGrid();
-        PriorityHeapEnzo<CellEnzo> frontier = new PriorityHeapEnzo<CellEnzo>(); //Frontier = frontier des trucs a parcourir
+        PriorityHeap<Cell> frontier = new PriorityHeap<Cell>(); //Frontier = frontier des trucs a parcourir
         start.node = frontier.Insert(start, 0);
         while (!frontier.IsEmpty())
         {
-            NodeEnzo<CellEnzo> current = frontier.PopMin();
-            CellEnzo cell = current.content;
+            Node<Cell> current = frontier.PopMin();
+            Cell cell = current.content;
             cell.visited = true;
             //cell.SetMaterial(visited);
             if (cell == target) break;
 
-            foreach (CellEnzo neigh in cell.neighbors)
+            foreach (Cell neigh in cell.neighbors)
             {
                 if (neigh.visited) continue;
                 if (neigh.IsWall) continue;
@@ -93,8 +93,8 @@ public class GridPathFindingEnzo : MonoBehaviour
             }
         }
 
-        List<CellEnzo> res = new List<CellEnzo>();
-        CellEnzo currentCell = target;
+        List<Cell> res = new List<Cell>();
+        Cell currentCell = target;
         while (currentCell.parent != null)
         {
             res.Add(currentCell);

@@ -405,7 +405,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5910642515867920907}
   - component: {fileID: 2648620819625151811}
-  - component: {fileID: 987923380268155388}
+  - component: {fileID: 8847731395970654095}
   m_Layer: 0
   m_Name: maison recolte
   m_TagString: Untagged
@@ -446,7 +446,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 1.7416124, z: 4}
   m_Center: {x: 0, y: 0.8488822, z: 0}
---- !u!114 &987923380268155388
+--- !u!114 &8847731395970654095
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -455,12 +455,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6434802337290694833}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de66c238efd32a4a93216fb2f85b059, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b73546b23404c24190698a54d07dc00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsWall: 1
-  choosenGO: {fileID: 6098826377707719571, guid: 76d6c23bbc5d51145ba6a98727cf330d,
-    type: 3}
+  choosenGO: {fileID: 0}
 --- !u!1 &8156890888750969647
 GameObject:
   m_ObjectHideFlags: 0

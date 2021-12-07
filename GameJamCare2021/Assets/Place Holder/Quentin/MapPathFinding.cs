@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 public class MapPathFinding : MonoBehaviour{
     public Vector2Int sizeGrid;
-    public Cell[,] map;
-    public List<Cell> cells = new List<Cell>();
+    public CellQuentin[,] map;
+    public List<CellQuentin> cells = new List<CellQuentin>();
     void Awake()
     {
-        map = new Cell[sizeGrid.x, sizeGrid.y];
+        map = new CellQuentin[sizeGrid.x, sizeGrid.y];
         for (int x = 0; x < sizeGrid.x; x++){
             for (int y = 0; y < sizeGrid.y; y++){
                 map[x, y] = cells[y + x * sizeGrid.y];
@@ -16,8 +16,8 @@ public class MapPathFinding : MonoBehaviour{
         }
         for (int y = 0; y < sizeGrid.y; y++){
             for (int x = 0; x < sizeGrid.x; x++){
-                Cell c = map[x, y];
-                c.neighbors = new List<Cell>();
+                CellQuentin c = map[x, y];
+                c.neighbors = new List<CellQuentin>();
                 if (x < sizeGrid.x - 1) c.neighbors.Add(map[x + 1, y]);
                 if (x > 0)              c.neighbors.Add(map[x - 1, y]);
                 if (y < sizeGrid.y - 1) c.neighbors.Add(map[x, y + 1]);
@@ -25,19 +25,19 @@ public class MapPathFinding : MonoBehaviour{
             }
         }
     }
-    public List<Cell> PathFind(Cell start, Cell target)
+    public List<CellQuentin> PathFind(CellQuentin start, CellQuentin target)
     {
         ResetMap();
         Debug.Log(start.name + " to " + target.name);
-        PriorityHeap<Cell> frontier = new PriorityHeap<Cell>();
+        PriorityHeapQuentin<CellQuentin> frontier = new PriorityHeapQuentin<CellQuentin>();
         start.node = frontier.Insert(start, 0);
         while (!frontier.IsEmpty()){
-            Node<Cell> current = frontier.PopMin();
-            Cell cell = current.content;
+            NodeQuentin<CellQuentin> current = frontier.PopMin();
+            CellQuentin cell = current.content;
             cell.visited = true;
             cell.SetTrail();
             if (cell == target) break;
-            foreach (Cell neigh in current.content.neighbors){
+            foreach (CellQuentin neigh in current.content.neighbors){
                 if (neigh.visited) continue;
                 if (neigh.house) continue;
                 if (neigh.car) continue;
@@ -52,8 +52,8 @@ public class MapPathFinding : MonoBehaviour{
                 }
             }
         }
-        List<Cell> res = new List<Cell>();
-        Cell currentCell = target;
+        List<CellQuentin> res = new List<CellQuentin>();
+        CellQuentin currentCell = target;
         while (currentCell.parent != null)
         {
             res.Add(currentCell);
@@ -72,7 +72,7 @@ public class MapPathFinding : MonoBehaviour{
     void ResetMap(){
         for (int y = 0; y < sizeGrid.y; y++){
             for (int x = 0; x < sizeGrid.x; x++){
-                Cell c = map[x, y];
+                CellQuentin c = map[x, y];
                 c.visited = false;
                 c.RemoveTrail();
                 c.node = null;

@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour {
     public void TimerUpdate(float timer) {
         timer = timer / 60;
         int timerInt = (int)timer;
-        textTimer.text = $"{timerInt} : {(int)(Math.Round(timer - timerInt,2)*60)}"; // Timer
+        textTimer.text = $"{timerInt} : {(int)(Math.Round(timer - timerInt,2)*60)}"; // Timer fix quand 0.01
     }
     public void DisplayStock() {
         foreach(Transform t in stockPanel.transform) {

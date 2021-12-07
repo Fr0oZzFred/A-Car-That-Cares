@@ -3,25 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeEnzo<T>
+public class Node<T>
 {
     public T content;
     public int priority;
     public int index;
 }
 
-public class PriorityHeapEnzo<T>
+public class PriorityHeap<T>
 {
-    List<NodeEnzo<T>> heap;
+    List<Node<T>> heap;
 
-    public PriorityHeapEnzo()
+    public PriorityHeap()
     {
-        heap = new List<NodeEnzo<T>>();
+        heap = new List<Node<T>>();
     }
 
-    public NodeEnzo<T> Insert(T content, int priority)
+    public Node<T> Insert(T content, int priority)
     {
-        NodeEnzo<T> newElem = new NodeEnzo<T>();
+        Node<T> newElem = new Node<T>();
         newElem.content = content;
         newElem.priority = priority;
         newElem.index = heap.Count;
@@ -30,7 +30,7 @@ public class PriorityHeapEnzo<T>
         return newElem;
     }
 
-    public void ChangePriority(NodeEnzo<T> node, int newPrio)
+    public void ChangePriority(Node<T> node, int newPrio)
     {
         if (node.index >= heap.Count) throw new IndexOutOfRangeException();
         if (heap[node.index] != node) throw new InvalidOperationException();
@@ -42,21 +42,21 @@ public class PriorityHeapEnzo<T>
             GoDown(node.index);
     }
 
-    public NodeEnzo<T> Search(T content)
+    public Node<T> Search(T content)
     {
-        foreach (NodeEnzo<T> n in heap)
+        foreach (Node<T> n in heap)
             if (n.content.Equals(content)) return n;
         return null;
     }
 
-    public NodeEnzo<T> GetMinNode()
+    public Node<T> GetMinNode()
     {
         return heap[0];
     }
 
-    public NodeEnzo<T> PopMin()
+    public Node<T> PopMin()
     {
-        NodeEnzo<T> res = GetMinNode();
+        Node<T> res = GetMinNode();
         Swap(0, heap.Count - 1);
         heap.RemoveAt(heap.Count - 1);
         GoDown(0);
@@ -96,7 +96,7 @@ public class PriorityHeapEnzo<T>
 
     void Swap(int node1, int node2)
     {
-        NodeEnzo<T> tmp = heap[node1];
+        Node<T> tmp = heap[node1];
         heap[node1] = heap[node2];
         heap[node2] = tmp;
 

@@ -23,7 +23,7 @@ public class BatimentController : MonoBehaviour
 
     void Update()
     {
-        if (MouseManager.Instance.selection == null)
+        if (MouseManagerQuentin.Instance.selection == null)
         {
             car = null;
         }
@@ -43,7 +43,7 @@ public class BatimentController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (MouseManager.Instance.isCar == true)
+        if (MouseManagerQuentin.Instance.isCar == true)
         {
             car = CarBehaviour.globalCar;
         }

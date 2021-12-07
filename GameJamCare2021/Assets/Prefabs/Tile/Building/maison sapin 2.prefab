@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6316582162313291338}
   - component: {fileID: 8092393809558655616}
   - component: {fileID: 5520425514701465780}
-  - component: {fileID: 3139529522366894728}
+  - component: {fileID: 1601420939722636274}
   m_Layer: 0
   m_Name: maison sapin 2
   m_TagString: Untagged
@@ -97,7 +97,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.037442, y: 5.1302958, z: 3.294847}
   m_Center: {x: -0.00001763998, y: 0.04642362, z: 1.6385183}
---- !u!114 &3139529522366894728
+--- !u!114 &1601420939722636274
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,9 +106,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 7731846285749121877}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3de66c238efd32a4a93216fb2f85b059, type: 3}
+  m_Script: {fileID: 11500000, guid: 6b73546b23404c24190698a54d07dc00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsWall: 1
-  choosenGO: {fileID: 6098826377707719571, guid: 76d6c23bbc5d51145ba6a98727cf330d,
-    type: 3}
+  choosenGO: {fileID: 0}

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class EventRoad : MonoBehaviour{
     public MapPathFinding map;
-    List<CellEnzo> road = new List<CellEnzo>();
+    List<Cell> road = new List<Cell>();
     float t = 0;
     int action;
     void Start(){
@@ -23,7 +23,7 @@ public class EventRoad : MonoBehaviour{
         }
     }
     public void BlockingRoad(){
-        CellEnzo eventCell = road[Random.Range(0, road.Count)];
+        Cell eventCell = road[Random.Range(0, road.Count)];
         int end = Random.Range(8, 10);
         float t = 0;
         while(t < end)

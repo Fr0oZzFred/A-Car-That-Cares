@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterEnzo : MonoBehaviour
+public class Character : MonoBehaviour
 {
-    public GridPathFindingEnzo grid;
+    public GridPathFinding grid;
     //public GetGrid gridGet;
     //public static CharacterEnzo globalCharacter; //pas faire ca marche mais c po bien
-    CellEnzo currentCell;
-    List<CellEnzo> goToList;
+    Cell currentCell;
+    List<Cell> goToList;
 
     Vector3 posA = new Vector3();
     Vector3 posB = new Vector3();
@@ -24,7 +24,7 @@ public class CharacterEnzo : MonoBehaviour
     {
         //globalCharacter = this;
         currentCell = GetGrid.grid[13, 10];
-        goToList = new List<CellEnzo>();
+        goToList = new List<Cell>();
 
         stock = vehicle.stock;
         speed = vehicle.speed;
@@ -32,9 +32,9 @@ public class CharacterEnzo : MonoBehaviour
         material = vehicle.mat;
     }
 
-    public void GoTo(CellEnzo target)
+    public void GoTo(Cell target)
     {
-        CellEnzo start = currentCell;
+        Cell start = currentCell;
         goToList.Clear();
         goToList.AddRange(grid.PathFind(start, target));
     }
@@ -63,8 +63,8 @@ public class CharacterEnzo : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        MouseManagerEnzo.Instance.selected = this;
-        MouseManagerEnzo.Instance.selectedName = this.gameObject.name;
+        MouseManager.Instance.selected = this;
+        MouseManager.Instance.selectedName = this.gameObject.name;
         Debug.Log("Touché");
     }
 }

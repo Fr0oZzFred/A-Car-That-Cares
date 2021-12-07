@@ -5,13 +5,13 @@ public class CarBehaviour : MonoBehaviour{
     public MapPathFinding map;
     public static GameObject globalCar;
     public Vector2Int startPos;
-    Cell currentCell;
-    List<Cell> goToList;
+    CellQuentin currentCell;
+    List<CellQuentin> goToList;
     void Start(){
         globalCar = this.gameObject;
         currentCell = map.map[startPos.x, startPos.y];
         currentCell.car = true;
-        goToList = new List<Cell>();
+        goToList = new List<CellQuentin>();
     }
     void Update(){
         if (goToList.Count > 0){
@@ -24,8 +24,8 @@ public class CarBehaviour : MonoBehaviour{
             }
         }
     }
-    public void GoTo(Cell target){
-        Cell start = currentCell;
+    public void GoTo(CellQuentin target){
+        CellQuentin start = currentCell;
         if (goToList.Count > 0) start = goToList[goToList.Count - 1];
         goToList.AddRange(map.PathFind(start, target));
     }
