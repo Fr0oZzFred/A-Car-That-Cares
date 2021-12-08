@@ -27,10 +27,12 @@ public class CharacterMenu : MonoBehaviour
     public Sprite carImage { get; private set; }
     Material material;
 
+    bool flemInstance = false;
+
     void Start()
     {
         //globalCharacter = this;
-        currentCell = GetGrid.grid[startX, startY];
+        //currentCell = GetGrid.grid[startX, startY];
         goToList = new List<Cell>();
 
         stockMax = vehicle.stockMax;
@@ -63,7 +65,7 @@ public class CharacterMenu : MonoBehaviour
                 goToList.RemoveAt(0);
             }
         }
-        else if (goToList.Count == 0)
+        else if (goToList.Count == 0 && flemInstance)
         {
             int rnd = Random.Range(0, cellX.Count);
             GoTo(GetGrid.grid[cellX[rnd], cellY[rnd]]);
@@ -76,6 +78,11 @@ public class CharacterMenu : MonoBehaviour
 
         Vector3 dir = (posB - posA).normalized;
         transform.rotation = Quaternion.LookRotation(dir);
+
+        if(!flemInstance && GetGrid.grid[startX, startY] != null)
+        {
+            currentCell = GetGrid.grid[startX, startY];
+        }
     }
     /*
     private void OnMouseDown()
