@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6cfcabaf4b4f0bc4dac84b6c0f5e185c
+guid: 20064814a1bf49943b551a69462ffb48
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -7,8 +7,48 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: e34eacbd32ade314fb1fe9d06ca10802, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.005
+    second: {fileID: 2100000, guid: e34eacbd32ade314fb1fe9d06ca10802, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.007
+    second: {fileID: 2100000, guid: e34eacbd32ade314fb1fe9d06ca10802, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.009
+    second: {fileID: 2100000, guid: ef6237457d256e846bff1d45177e3a52, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.010
+    second: {fileID: 2100000, guid: e34eacbd32ade314fb1fe9d06ca10802, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: colo chene
+    second: {fileID: 2100000, guid: d566f83147320f748bc629abc75a329d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: herbe
     second: {fileID: 2100000, guid: 4a4ef6d10d9760f4097edc19df50e825, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: maison
+    second: {fileID: 2100000, guid: 6b3f263f51286444493438c2ba86f18f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: sapin
+    second: {fileID: 2100000, guid: b1b84874eee2e4149bd651cedb380d2e, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

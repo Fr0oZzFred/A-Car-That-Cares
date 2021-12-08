@@ -9,11 +9,13 @@ public class GameManager : MonoBehaviour {
     public float timerDay;
     int GameDuration = 10;
     int dayCount = 0;
-    int deliver;
+    public int deliver { get; private set; }
     public int[] dayTimeOne = new int[10];
     public int[] dayTimeTwo = new int[10];
     public int[] objectiveArray = new int[10];
-    int objective;
+    public int objective { get; private set; }
+    public bool victory = false;
+    bool nextLoad = true;
     [Header("Camera")]
     public CinemachineVirtualCamera camMainMenu;
     public CinemachineVirtualCamera camInGame;
@@ -21,7 +23,7 @@ public class GameManager : MonoBehaviour {
     public bool enabledDebug;
     #endregion
     public static GameManager Instance { get; private set; }
-    
+
     public enum GameState {
         MainMenu = 0,
         InGame = 1,
@@ -36,8 +38,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void Start() {
-        timerDay = Random.Range(dayTimeOne[dayCount], dayTimeTwo[dayCount]);
-        objective = objectiveArray[dayCount];
+        ResetGameManager();
     }
 
 
@@ -45,47 +46,50 @@ public class GameManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Escape)) Pause();
         if (enabledDebug && Input.GetKeyDown(KeyCode.G)) ChangeGameState(GameState.GameOver);
 
-        if (timerDay < 0)
-        {
-            if (deliver >= objective)
-            {
+        if (timerDay < 0) {
+            if (deliver >= objective) {
                 dayCount++;
-                if (dayCount < GameDuration)
-                {
-                    timerDay = Random.Range(dayTimeOne[dayCount], dayTimeTwo[dayCount]);
-                    objective = objectiveArray[dayCount];
-
+                if (dayCount < GameDuration) {
+                    SetTimer();
+                } else {
+                    victory = true;
+                    ChangeGameState(GameState.GameOver);
+                    victory = false;
                 }
-                else
-                {
-                    //Victory
-                }
-            }
-            else
-            {
-                //defaite
+            } else {
+                ChangeGameState(GameState.GameOver);
             }
         }
-        if(GameStates == GameState.InGame) {
+        if (GameStates == GameState.InGame) {
             timerDay -= Time.deltaTime;
             UIManager.Instance.TimerUpdate(timerDay);
         }
     }
+    void SetTimer() {
 
+        timerDay = Random.Range(dayTimeOne[dayCount], dayTimeTwo[dayCount]);
+        objective = objectiveArray[dayCount];
+    }
     void ChangeGameState(GameState gameState) {
         GameState oldGameState = GameStates;
         GameStates = gameState;
         UIManager.Instance.ChangeState(oldGameState);
         switch (GameStates) {
             case GameState.MainMenu:
+                if (oldGameState != GameState.MainMenu) Restart();
+                Time.timeScale = 1;
                 camMainMenu.Priority = camInGame.Priority + 1;
                 break;
             case GameState.InGame:
+                if (oldGameState != GameState.Pause) Restart();
+                Time.timeScale = 1;
                 camInGame.Priority = camMainMenu.Priority + 1;
                 break;
             case GameState.Pause:
+                Time.timeScale = 0;
                 break;
             case GameState.GameOver:
+                Time.timeScale = 1;
                 break;
             case GameState.Credit:
                 break;
@@ -93,7 +97,9 @@ public class GameManager : MonoBehaviour {
         if (enabledDebug) DebugGameState();
     }
 
-
+    public void AddScore(int score) {
+        deliver += score;
+    }
     public void ChangeGameState(int gamestate) {
         ChangeGameState((GameState)gamestate);
     }
@@ -104,10 +110,20 @@ public class GameManager : MonoBehaviour {
         else if (GameStates == GameState.Pause)
             ChangeGameState(GameState.InGame);
     }
-
-    public void Restart() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // à changer adapter
+    public void SetNextLoad(bool b) {
+        nextLoad = b;
     }
+    public void Restart() {
+        if (nextLoad) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        ResetGameManager();
+        UIManager.Instance.ResetUI();
+    }
+
+    public void ResetGameManager() {
+        SetTimer();
+        deliver = 0;
+    }
+
     public void QuitGame() {
         Application.Quit();
     }

@@ -21,7 +21,7 @@ public class Character : MonoBehaviour
     public Sprite carImage { get; private set; }
     Material material;
 
-    void Start()
+    private void Awake()
     {
         //globalCharacter = this;
         currentCell = GetGrid.grid[13, 10];
@@ -67,6 +67,10 @@ public class Character : MonoBehaviour
     }
     private void OnMouseDown()
     {
+        if(MouseManager.Instance.selected != null) {
+            MouseManager.Instance.selected.pingCar.GetComponent<Animator>().SetBool("Moving", false);
+            MouseManager.Instance.selected.pingCar.SetActive(false);
+        }
         MouseManager.Instance.selected = this;
         MouseManager.Instance.selectedName = this.gameObject.name;
         MouseManager.Instance.isCar = true;

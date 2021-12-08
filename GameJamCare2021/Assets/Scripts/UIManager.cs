@@ -14,7 +14,10 @@ public class UIManager : MonoBehaviour {
     List<Image> gestionnaireColis;
     List<TextMeshProUGUI> gestionnaireText;
     public GameObject stockPanel;
-    public Image selectedCar;
+    public Image selectedCarImage;
+
+    public GameObject goodGameOver;
+    public GameObject badGameOver;
 
     [Header("Text")]
     public TextMeshProUGUI textStock;
@@ -61,7 +64,7 @@ public class UIManager : MonoBehaviour {
         textTimer.text = $"{timerInt} : {(int)(Math.Round(timer - timerInt,2)*60)}"; // Timer fix quand 0.01
     }
     public void DisplayStock(Sprite carImage, int stockMax, int stock) {
-        selectedCar.sprite = carImage;
+        selectedCarImage.sprite = carImage;
         int stockCount = stock;
         foreach(Transform t in stockPanel.transform) {
             if (t.GetComponent<Image>() != null) { 
@@ -71,7 +74,7 @@ public class UIManager : MonoBehaviour {
             else t.GetComponent<TextMeshProUGUI>().SetText($"{stock}/{stockMax}");
         }
         stockPanel.SetActive(true);
-        selectedCar.gameObject.SetActive(true);
+        selectedCarImage.gameObject.SetActive(true);
     }
     public void UpdateCarList() {
         for(int i = 0; i < VehicleCenterManager.Instance.vehicleList.Count; i++) {
@@ -88,8 +91,25 @@ public class UIManager : MonoBehaviour {
     public void ChangeState(GameManager.GameState oldGameState) {
         uiElement[(int)oldGameState].SetActive(false);
         uiElement[(int)GameManager.GameStates].SetActive(true);
+        if (GameManager.GameStates == GameManager.GameState.GameOver) {
+            if (GameManager.Instance.victory) {
+                badGameOver.SetActive(false);
+                goodGameOver.SetActive(true);
+                goodGameOver.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(
+                    $"You helped {GameManager.Instance.deliver} and your objective was {GameManager.Instance.objective}. \n Awesome! You get a new Car!");
+            } else {
+                goodGameOver.SetActive(false);
+                badGameOver.SetActive(true);
+                badGameOver.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(
+                    $"You helped {GameManager.Instance.deliver} and your objective was {GameManager.Instance.objective}. \n Try again! To get a new Car!");
+            }
+        }
     }
-
+    public void ResetUI() {
+        stockPanel.SetActive(false);
+        selectedCarImage.gameObject.SetActive(false);
+        ResetGestionnaire();
+    }
     public void ResetGestionnaire() {
         foreach(Transform t in gestionnaire.transform) {
             t.gameObject.SetActive(false);
