@@ -21,15 +21,16 @@ public class MaisonManager : MonoBehaviour
 
     void Update()
     {
-        if (rndTimer < 0)
-        {
-            rndChoose = Random.Range(0, maisonList.Count);
-            if (maisonList[rndChoose].tag == "Maison") {
-            maisonList[rndChoose].Demande();
+        if(GameManager.GameStates == GameManager.GameState.InGame) {
+            if (rndTimer < 0) {
+                rndChoose = Random.Range(0, maisonList.Count);
+                if (maisonList[rndChoose].tag == "Maison") {
+                    maisonList[rndChoose].Demande();
+                }
+                rndTimer = Random.Range(5, 20); //bouger var avec temps
             }
-            rndTimer = Random.Range(5, 20); //bouger var avec temps
+            rndTimer -= Time.deltaTime;
         }
-        rndTimer -= Time.deltaTime;
     }
 
     public void AddMaison(BatimentController maison)

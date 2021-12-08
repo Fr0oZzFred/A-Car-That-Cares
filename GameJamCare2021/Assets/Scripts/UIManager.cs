@@ -81,7 +81,7 @@ public class UIManager : MonoBehaviour {
     public void DisplayStock(Sprite carImage, int stockMax, int stock, int nb) {
         DisplayStock(carImage, stockMax, stock);
         textJauge.GetComponent<TextMeshProUGUI>().SetText(nb.ToString());
-        if (nb > 0) {
+        if (nb >= 0) {
             textJauge.GetComponent<TextMeshProUGUI>().SetText("+" +nb.ToString());
             textJauge.GetComponent<Animator>().SetTrigger("Positive");
         } else textJauge.GetComponent<Animator>().SetTrigger("Negative");

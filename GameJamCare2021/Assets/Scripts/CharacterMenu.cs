@@ -52,7 +52,6 @@ public class CharacterMenu : MonoBehaviour
     {
         if (goToList.Count > 0)
         {
-            pingCar.GetComponent<Animator>().SetBool("Moving", true);
             transform.position = Vector3.MoveTowards(
                 transform.position,
                 goToList[0].transform.position,

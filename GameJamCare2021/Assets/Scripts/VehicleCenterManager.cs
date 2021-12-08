@@ -23,6 +23,9 @@ public class VehicleCenterManager : MonoBehaviour
     {
         /*if (Input.GetKeyDown("a"))
             InstanceCar();*/
+        if(GetGrid.grid != null) {
+            ActivateCarMenu();
+        }
     }
     public void ClearVehicle() {
         for(int i = 0; i < vehicleList.Count; i++) {

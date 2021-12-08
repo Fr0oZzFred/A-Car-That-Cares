@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
     public int[] objectiveArray = new int[5];
     public int objective { get; private set; }
     public bool victory = false;
+    bool firstTime = true;
     [Header("Camera")]
     public CinemachineVirtualCamera camMainMenu;
     public CinemachineVirtualCamera camInGame;
@@ -72,14 +73,14 @@ public class GameManager : MonoBehaviour {
         UIManager.Instance.ChangeState(oldGameState);
         switch (GameStates) {
             case GameState.MainMenu:
-                //VehicleCenterManager.Instance.ActivateCarMenu();
+                if(!firstTime) VehicleCenterManager.Instance.ActivateCarMenu();
                 Restart();
                 Time.timeScale = 1;
                 camMainMenu.Priority = camInGame.Priority + 1;
                 break;
             case GameState.InGame:
                 if (dayCount > GameDuration) dayCount = GameDuration;
-                //VehicleCenterManager.Instance.DectivateCarMenu();
+                VehicleCenterManager.Instance.DectivateCarMenu();
                 if (oldGameState != GameState.Pause) {
                     Restart();
                     VehicleCenterManager.Instance.InstanceCar(dayCount + 1);
@@ -118,7 +119,9 @@ public class GameManager : MonoBehaviour {
         ResetGameManager();
         UIManager.Instance.ResetUI();
     }
-
+    public void SetFirstTimeFalse() {
+        firstTime = false;
+    }
     public void ResetGameManager() {
         SetTimer();
         deliver = 0;

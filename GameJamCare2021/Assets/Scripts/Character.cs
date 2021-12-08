@@ -37,16 +37,11 @@ public class Character : MonoBehaviour
 
     public void ChangeStock(int nbColis)
     {
-        if ((actualStock += nbColis) < stockMax && (actualStock += nbColis) > 0)
-        {
-            actualStock += nbColis / 3;
+        actualStock += nbColis;
+        if(nbColis != 0) {
+            UIManager.Instance.DisplayStock(carImage, stockMax, actualStock, nbColis);
+            UIManager.Instance.UpdateCarList();
         }
-        else
-        {
-            actualStock = stockMax;
-        }
-        UIManager.Instance.DisplayStock(carImage, stockMax, actualStock,nbColis);
-        UIManager.Instance.UpdateCarList();
     }
 
     public void GoTo(Cell target)

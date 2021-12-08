@@ -17,6 +17,8 @@ public class BatimentController : MonoBehaviour
     public int stock = 0;
 
     RaycastHit hit;
+    public GameObject askPopUp;
+    public GameObject thanksPopUp;
 
     private void Start()
     {
@@ -26,29 +28,28 @@ public class BatimentController : MonoBehaviour
 
     void Update()
     {
-        if (MouseManager.Instance.selected == null)
-        {
-            car = null;
-        }
+        if(GameManager.GameStates == GameManager.GameState.InGame) {
+            /*if (MouseManager.Instance.selected == null) {
+                car = null;
+            }*/
 
-        Debug.DrawRay(transform.position, transform.TransformDirection(direction) * rayDistance, Color.red);
-        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, rayDistance, layers))
-        {
-            collide = true;
-        }
-        else
-        {
-            collide = false;
-        }
+            Debug.DrawRay(transform.position, transform.TransformDirection(direction) * rayDistance, Color.red);
+            if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, rayDistance, layers)) {
+                collide = true;
+            } else {
+                collide = false;
+            }
 
-        if (charging == true && stock < 10 && gameObject.tag == "Stockage")
-        {
-            charging = false;
-            stock++;
-            StartCoroutine(Charging());
-        }
+            if (charging == true && stock < 10 && gameObject.tag == "Stockage") {
+                charging = false;
+                stock++;
+                StartCoroutine(Charging());
+                if(!thanksPopUp.isStatic)
+                askPopUp.SetActive(true);
+            }
 
-        Collide();
+            Collide();
+        }
     }
 
     private void OnMouseDown()
@@ -67,32 +68,36 @@ public class BatimentController : MonoBehaviour
     {
         if (collide == true)
         {
-            if (car != null && demande == true && houseSelected == true && gameObject.tag == "Maison")
+            if (car != null && demande == true && gameObject.tag == "Maison" && car.actualStock > 1)
             {
                 car.ChangeStock(-1);
                 demande = false;
                 houseSelected = false;
+                StartCoroutine(ThanksPopUp());
             }
             
-            if (car != null && demande == true && houseSelected == true && gameObject.tag == "Church")
+            if (car != null && demande == true && gameObject.tag == "Church" && car.actualStock > 2)
             {
                 car.ChangeStock(-2);
                 demande = false;
                 houseSelected = false;
+                StartCoroutine(ThanksPopUp());
             }
 
-            if (car != null && demande == true && houseSelected == true && gameObject.tag == "School")
+            if (car != null && demande == true && gameObject.tag == "School" && car.actualStock > 4)
             {
                 car.ChangeStock(-4);
                 demande = false;
                 houseSelected = false;
+                StartCoroutine(ThanksPopUp());
             }
 
             if (gameObject.tag == "Stockage")
             {
                 car = MouseManager.Instance.selected;
-                car.ChangeStock(stock);
+                car.ChangeStock(Mathf.Clamp(stock, 0 ,car.stockMax - car.actualStock));
                 stock = 0;
+                StartCoroutine(ThanksPopUp());
             }
         }
     }
@@ -101,15 +106,25 @@ public class BatimentController : MonoBehaviour
     {
         if (demande == false)
         {
+            thanksPopUp.SetActive(false);
             demande = true;
+            askPopUp.SetActive(true);
         }
-        Debug.Log(transform.position);
     }
 
     private IEnumerator Charging()
     {
+        thanksPopUp.SetActive(false);
         charging = false;
         yield return new WaitForSeconds(3);
-        charging = true;
+        charging = true; 
+    }
+
+    private IEnumerator ThanksPopUp() {
+        askPopUp.SetActive(false);
+        thanksPopUp.SetActive(true);
+        yield return new WaitForSeconds(3);
+        thanksPopUp.SetActive(false);
+
     }
 }
