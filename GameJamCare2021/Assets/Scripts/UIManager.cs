@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour {
     [Header("CarElement")]
     public GameObject gestionnaire;
     List<Image> gestionnaireImage;
+    List<Image> gestionnaireColis;
     List<TextMeshProUGUI> gestionnaireText;
     public GameObject stockPanel;
     public Image selectedCar;
@@ -29,19 +30,22 @@ public class UIManager : MonoBehaviour {
     }
     private void Start() {
         gestionnaireImage = new List<Image>();
+        gestionnaireColis = new List<Image>();
         gestionnaireText = new List<TextMeshProUGUI>();
         int i = 0;
         int indexImage = 0;
+        int indexColis = 1;
         int indexText = 2;
         foreach (Transform t in gestionnaire.transform) {
             if(i == indexImage) {
                 gestionnaireImage.Add(t.GetComponent<Image>());
-                Debug.Log("image" + i);
                 indexImage += 3;
-            }else if(i == indexText) {
+            } if (i == indexColis) {
+                gestionnaireColis.Add(t.GetComponent<Image>());
+                indexColis += 3;
+            } else if (i == indexText) {
                 gestionnaireText.Add(t.GetComponent<TextMeshProUGUI>());
                 indexText += 3;
-                Debug.Log("Text" + i);
             }
             i++;
         }
@@ -72,6 +76,7 @@ public class UIManager : MonoBehaviour {
     public void UpdateCarList() {
         for(int i = 0; i < VehicleCenterManager.Instance.vehicleList.Count; i++) {
             gestionnaireImage[i].gameObject.SetActive(true);
+            gestionnaireColis[i].gameObject.SetActive(true);
             gestionnaireText[i].gameObject.SetActive(true);
             gestionnaireImage[i].sprite = VehicleCenterManager.Instance.vehicleList[i].carImage;
             gestionnaireText[i].SetText(
