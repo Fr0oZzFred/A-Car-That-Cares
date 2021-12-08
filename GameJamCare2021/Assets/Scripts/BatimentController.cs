@@ -35,6 +35,8 @@ public class BatimentController : MonoBehaviour
 
             Debug.DrawRay(transform.position, transform.TransformDirection(direction) * rayDistance, Color.red);
             if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, rayDistance, layers)) {
+                car = hit.collider.GetComponent<Character>();
+                if(car != null)
                 collide = true;
             } else {
                 collide = false;
@@ -54,10 +56,10 @@ public class BatimentController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (MouseManager.Instance.isCar == true)
+        /*if (MouseManager.Instance.isCar == true)
         {
             car = MouseManager.Instance.selected;
-        }
+        }*/
         if (demande == true)
         {
             houseSelected = true;
@@ -66,26 +68,27 @@ public class BatimentController : MonoBehaviour
 
     private void Collide()
     {
-        if (collide == true)
-        {
-            if (car != null && demande == true && gameObject.tag == "Maison" && car.actualStock > 1)
+        if (collide == true) {
+            if (car != null && demande == true && gameObject.tag == "Maison" && car.actualStock > 0)
             {
+                GameManager.Instance.AddScore(1);
                 car.ChangeStock(-1);
                 demande = false;
                 houseSelected = false;
                 StartCoroutine(ThanksPopUp());
             }
             
-            if (car != null && demande == true && gameObject.tag == "Church" && car.actualStock > 2)
+            if (car != null && demande == true && gameObject.tag == "Church" && car.actualStock > 1)
             {
+                GameManager.Instance.AddScore(1);
                 car.ChangeStock(-2);
                 demande = false;
                 houseSelected = false;
                 StartCoroutine(ThanksPopUp());
             }
 
-            if (car != null && demande == true && gameObject.tag == "School" && car.actualStock > 4)
-            {
+            if (car != null && demande == true && gameObject.tag == "School" && car.actualStock > 3) {
+                GameManager.Instance.AddScore(1);
                 car.ChangeStock(-4);
                 demande = false;
                 houseSelected = false;
@@ -94,7 +97,6 @@ public class BatimentController : MonoBehaviour
 
             if (gameObject.tag == "Stockage")
             {
-                car = MouseManager.Instance.selected;
                 car.ChangeStock(Mathf.Clamp(stock, 0 ,car.stockMax - car.actualStock));
                 stock = 0;
                 StartCoroutine(ThanksPopUp());

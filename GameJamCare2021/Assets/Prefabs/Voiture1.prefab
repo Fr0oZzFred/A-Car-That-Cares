@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3862634441048893620}
   - component: {fileID: 3862634441048893621}
   - component: {fileID: 3862634441048893618}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Voiture1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 8293391904540925428}
   - component: {fileID: 4951655470936625745}
   - component: {fileID: 7157107266672191131}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: voiture
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,6 +257,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0fa8864a75c890a43b78e97b316db03e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fa8864a75c890a43b78e97b316db03e, type: 3}

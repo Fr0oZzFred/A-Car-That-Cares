@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour {
     public int objective { get; private set; }
     public bool victory = false;
     bool firstTime = true;
+    public GameObject tuto;
     [Header("Camera")]
     public CinemachineVirtualCamera camMainMenu;
     public CinemachineVirtualCamera camInGame;
@@ -73,26 +74,33 @@ public class GameManager : MonoBehaviour {
         UIManager.Instance.ChangeState(oldGameState);
         switch (GameStates) {
             case GameState.MainMenu:
-                if(!firstTime) VehicleCenterManager.Instance.ActivateCarMenu();
+                //if(!firstTime) VehicleCenterManager.Instance.ActivateCarMenu(); Enzo
                 Restart();
                 Time.timeScale = 1;
                 camMainMenu.Priority = camInGame.Priority + 1;
                 break;
             case GameState.InGame:
-                if (dayCount > GameDuration) dayCount = GameDuration;
-                VehicleCenterManager.Instance.DectivateCarMenu();
-                if (oldGameState != GameState.Pause) {
-                    Restart();
+                if (firstTime) {
+                    Time.timeScale = 0;
+                    tuto.SetActive(true);
                     VehicleCenterManager.Instance.InstanceCar(dayCount + 1);
+                } else {
+                    if (dayCount > GameDuration) dayCount = GameDuration;
+                    //VehicleCenterManager.Instance.DectivateCarMenu(); Enzo
+                    if (oldGameState != GameState.Pause) {
+                        Restart();
+                        VehicleCenterManager.Instance.InstanceCar(dayCount + 1);
+                    }
+                    Time.timeScale = 1;
                 }
-                Time.timeScale = 1;
+                
                 camInGame.Priority = camMainMenu.Priority + 1;
                 break;
             case GameState.Pause:
                 Time.timeScale = 0;
                 break;
             case GameState.GameOver:
-                Time.timeScale = 1;
+                Time.timeScale = 0;
                 break;
             case GameState.Credit:
                 break;
@@ -121,6 +129,8 @@ public class GameManager : MonoBehaviour {
     }
     public void SetFirstTimeFalse() {
         firstTime = false;
+        Time.timeScale = 1;
+        tuto.SetActive(false);
     }
     public void ResetGameManager() {
         SetTimer();
