@@ -22,6 +22,8 @@ public class UIManager : MonoBehaviour {
     [Header("Text")]
     public TextMeshProUGUI textStock;
     public TextMeshProUGUI textTimer;
+    public TextMeshProUGUI textScore;
+    public TextMeshProUGUI textJauge;
 
     [Header("Debug")]
     public bool enabledDebug;
@@ -54,14 +56,15 @@ public class UIManager : MonoBehaviour {
         }
         ResetGestionnaire();
     }
-    void UpdateScore() {
-        textStock.text = 0.ToString(); // Stock
+    public void UpdateScore() {
+        textScore.text = GameManager.Instance.deliver + "/" + GameManager.Instance.objectiveArray[GameManager.Instance.dayCount];
+        textJauge.SetText("tutu");
     }
 
     public void TimerUpdate(float timer) {
         timer = timer / 60;
         int timerInt = (int)timer;
-        textTimer.text = $"{timerInt} : {(int)(Math.Round(timer - timerInt,2)*60)}"; // Timer fix quand 0.01
+        textTimer.text = $"{timerInt} : {(int)(Math.Round(timer - timerInt, 2) * 60)}";
     }
     public void DisplayStock(Sprite carImage, int stockMax, int stock) {
         selectedCarImage.sprite = carImage;
@@ -75,6 +78,13 @@ public class UIManager : MonoBehaviour {
         }
         stockPanel.SetActive(true);
         selectedCarImage.gameObject.SetActive(true);
+    }
+    public void DisplayStock(Sprite carImage, int stockMax, int stock, int nb) {
+        DisplayStock(carImage, stockMax, stock);
+        textJauge.GetComponent<TextMeshProUGUI>().SetText(nb.ToString());
+        if(nb > 0) textJauge.GetComponent<Animator>().SetBool("Positif", false);
+        else       textJauge.GetComponent<Animator>().SetBool("Positif",true);
+        textJauge.gameObject.SetActive(true);
     }
     public void UpdateCarList() {
         for(int i = 0; i < VehicleCenterManager.Instance.vehicleList.Count; i++) {

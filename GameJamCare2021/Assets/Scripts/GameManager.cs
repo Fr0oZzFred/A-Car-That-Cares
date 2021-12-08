@@ -7,15 +7,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
     #region Declaration
     public float timerDay;
-    int GameDuration = 10;
-    int dayCount = 0;
-    public int deliver { get; private set; }
-    public int[] dayTimeOne = new int[10];
-    public int[] dayTimeTwo = new int[10];
-    public int[] objectiveArray = new int[10];
+    int GameDuration = 5;
+    public int dayCount = 0;
+    public int deliver; //{ get; private set; }
+    public int[] dayTimeOne = new int[5];
+    public int[] dayTimeTwo = new int[5];
+    public int[] objectiveArray = new int[5];
     public int objective { get; private set; }
     public bool victory = false;
-    bool nextLoad = true;
     [Header("Camera")]
     public CinemachineVirtualCamera camMainMenu;
     public CinemachineVirtualCamera camInGame;
@@ -44,26 +43,27 @@ public class GameManager : MonoBehaviour {
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) Pause();
-        if (enabledDebug && Input.GetKeyDown(KeyCode.G)) ChangeGameState(GameState.GameOver);
-
-        if (timerDay < 0) {
-            if (deliver >= objective) {
-                dayCount++;
-                if (dayCount < GameDuration) {
-                    SetTimer();
-                } else {
-                    victory = true;
-                    ChangeGameState(GameState.GameOver);
-                    victory = false;
-                }
-            } else {
-                ChangeGameState(GameState.GameOver);
-            }
-        }
         if (GameStates == GameState.InGame) {
+            if (timerDay < 0) {
+                if (deliver >= objective) {
+                    if (dayCount > GameDuration) {
+                        Restart();
+                    } else {
+                        dayCount++;
+                        victory = true;
+                        ChangeGameState(GameState.GameOver);
+                        victory = false;
+                    }
+                } else {
+                    ChangeGameState(GameState.GameOver);
+                }
+            }
             timerDay -= Time.deltaTime;
             UIManager.Instance.TimerUpdate(timerDay);
         }
+        
+
+        if (enabledDebug && Input.GetKeyDown(KeyCode.G)) ChangeGameState(GameState.GameOver);
     }
     void SetTimer() {
 
@@ -81,8 +81,10 @@ public class GameManager : MonoBehaviour {
                 camMainMenu.Priority = camInGame.Priority + 1;
                 break;
             case GameState.InGame:
-                if (oldGameState != GameState.Pause) Restart();
-                VehicleCenterManager.Instance.InstanceCar(dayCount + 1);
+                if (oldGameState != GameState.Pause) {
+                    Restart();
+                    VehicleCenterManager.Instance.InstanceCar(dayCount + 1);
+                }
                 Time.timeScale = 1;
                 camInGame.Priority = camMainMenu.Priority + 1;
                 break;
@@ -100,6 +102,7 @@ public class GameManager : MonoBehaviour {
 
     public void AddScore(int score) {
         deliver += score;
+        UIManager.Instance.UpdateScore();
     }
     public void ChangeGameState(int gamestate) {
         ChangeGameState((GameState)gamestate);
@@ -111,9 +114,6 @@ public class GameManager : MonoBehaviour {
         else if (GameStates == GameState.Pause)
             ChangeGameState(GameState.InGame);
     }
-    public void SetNextLoad(bool b) {
-        nextLoad = b;
-    }
     public void Restart() {
         VehicleCenterManager.Instance.ClearVehicle();
         ResetGameManager();
@@ -123,6 +123,7 @@ public class GameManager : MonoBehaviour {
     public void ResetGameManager() {
         SetTimer();
         deliver = 0;
+        AddScore(-deliver);
     }
 
     public void QuitGame() {
