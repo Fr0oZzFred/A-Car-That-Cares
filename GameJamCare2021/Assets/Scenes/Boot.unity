@@ -1748,7 +1748,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &262148757
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3232,7 +3232,7 @@ MonoBehaviour:
   m_text: 'School
 
 
-    They make demand and require 2 box to be satisfied'
+    They make demand and require 4 box to be satisfied'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5190,7 +5190,7 @@ MonoBehaviour:
   m_text: 'Church
 
 
-    They make demand and require 1 box to be satisfied'
+    They make demand and require 2 box to be satisfied'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9164,7 +9164,8 @@ MonoBehaviour:
     devlivery of said food by using a logistic network made of car driven by benevolent
     people. Cars have to pick up food boxes at storage centers and then deliver them
     to the houses emitting a demand for 1 box. There are also churches and schools
-    that require 2 and 4 boxes when they make a demand"
+    that require 2 and 4 boxes when they make a demand. \n\nEach day you will get
+    a new car\n if you completed\n the objective of the day. ;)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9227,7 +9228,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -838.57184, y: -292.6699, z: 464.95056, w: -273.98877}
+  m_margin: {x: -838.57184, y: -292.6699, z: 464.95056, w: -461.02527}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
