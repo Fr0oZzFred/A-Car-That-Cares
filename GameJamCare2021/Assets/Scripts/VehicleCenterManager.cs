@@ -7,6 +7,8 @@ public class VehicleCenterManager : MonoBehaviour
     [SerializeField]List<GameObject> CarPrefab;
     public List<Character> vehicleList;
 
+    [SerializeField] List<GameObject> carsMenu;
+
     public static VehicleCenterManager Instance { get; private set; }
 
     void Start()
@@ -37,5 +39,21 @@ public class VehicleCenterManager : MonoBehaviour
             vehicleList.Add(script);
         }
         UIManager.Instance.UpdateCarList();
+    }
+
+    public void ActivateCarMenu()
+    {
+        for(int i = 0; i < carsMenu.Count; i++)
+        {
+            carsMenu[i].SetActive(true);
+        }
+    }
+
+    public void DectivateCarMenu()
+    {
+        for (int i = 0; i < carsMenu.Count; i++)
+        {
+            carsMenu[i].SetActive(false);
+        }
     }
 }

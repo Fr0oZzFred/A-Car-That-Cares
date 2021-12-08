@@ -1158,7 +1158,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 57002709}
-  m_LocalRotation: {x: 0.26032642, y: 0.47650447, z: -0.15013844, w: 0.82621557}
+  m_LocalRotation: {x: 0.26032645, y: 0.4765045, z: -0.15013847, w: 0.82621557}
   m_LocalPosition: {x: 0.25634956, y: 20, z: 5.6835995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -15966,9 +15966,13 @@ MonoBehaviour:
   - {fileID: 734720583}
   gestionnaire: {fileID: 1857941765}
   stockPanel: {fileID: 456690666}
-  selectedCar: {fileID: 1533828249}
+  selectedCarImage: {fileID: 0}
+  goodGameOver: {fileID: 0}
+  badGameOver: {fileID: 0}
   textStock: {fileID: 1092112027}
   textTimer: {fileID: 1875976401}
+  textScore: {fileID: 0}
+  textJauge: {fileID: 0}
   enabledDebug: 0
 --- !u!114 &624677430
 MonoBehaviour:
@@ -20644,9 +20648,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerDay: 0
+  dayCount: 0
+  deliver: 0
   dayTimeOne: 64000000000000000000000000000000000000000000000000000000000000000000000000000000
   dayTimeTwo: 64000000000000000000000000000000000000000000000000000000000000000000000000000000
   objectiveArray: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+  victory: 0
   camMainMenu: {fileID: 57002710}
   camInGame: {fileID: 1660016143}
   enabledDebug: 0
@@ -20708,7 +20715,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 772492874}
-  m_LocalRotation: {x: 0.26032642, y: 0.47650447, z: -0.15013844, w: 0.82621557}
+  m_LocalRotation: {x: 0.26032645, y: 0.4765045, z: -0.15013847, w: 0.82621557}
   m_LocalPosition: {x: 0.25634956, y: 20, z: 5.6835995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -30716,8 +30723,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab91fcef26268894e91941fddedbfe9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CarPrefab: {fileID: 3862634441048893619, guid: 4731b14233f3ac94f89c995cfe10640d,
-    type: 3}
+  CarPrefab:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   vehicleList: []
 --- !u!4 &1164893151
 Transform:
@@ -38254,6 +38263,7 @@ GameObject:
   - component: {fileID: 1488553263}
   - component: {fileID: 1488553262}
   - component: {fileID: 1488553261}
+  - component: {fileID: 1488553264}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -38353,6 +38363,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1488553264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488553260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5795cfb73b61b542b436e46f3aa678a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maisonList: []
+  rndTimer: 0
+  rndChoose: 0
 --- !u!1 &1492946090
 GameObject:
   m_ObjectHideFlags: 0
@@ -48064,9 +48089,13 @@ MonoBehaviour:
   - {fileID: 711100716}
   gestionnaire: {fileID: 0}
   stockPanel: {fileID: 0}
-  selectedCar: {fileID: 0}
+  selectedCarImage: {fileID: 0}
+  goodGameOver: {fileID: 0}
+  badGameOver: {fileID: 0}
   textStock: {fileID: 1639820704}
   textTimer: {fileID: 1399702369}
+  textScore: {fileID: 0}
+  textJauge: {fileID: 0}
   enabledDebug: 0
 --- !u!114 &1827078354
 MonoBehaviour:
