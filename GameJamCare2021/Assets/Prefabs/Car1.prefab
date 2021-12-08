@@ -62,7 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 739807955}
   pingCar: {fileID: 6472971737274843885}
-  vehicle: {fileID: 11400000, guid: d901cbb720ecfba418bee10265ad0608, type: 2}
+  vehicle: {fileID: 11400000, guid: 113c1f288fc5f304385a5f1a96180b54, type: 2}
 --- !u!114 &739807955
 MonoBehaviour:
   m_ObjectHideFlags: 0
