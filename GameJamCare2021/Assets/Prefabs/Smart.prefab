@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1450530401352253766}
   - component: {fileID: 1450530401352253760}
   - component: {fileID: 739807955}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Car
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,8 +46,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.4194164, y: 1.3798437, z: 1}
-  m_Center: {x: -0.083577156, y: 0.89594746, z: 0}
+  m_Size: {x: 1.1548672, y: 1.3798437, z: 1}
+  m_Center: {x: 0.0026006699, y: 0.89594746, z: 0}
 --- !u!114 &1450530401352253760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 2019505999543722456}
   - component: {fileID: 3146153107182710397}
   - component: {fileID: 886530577871477431}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: camion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,6 +257,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 0fa8864a75c890a43b78e97b316db03e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fa8864a75c890a43b78e97b316db03e, type: 3}
