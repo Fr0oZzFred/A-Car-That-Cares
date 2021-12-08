@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 public class EventRoad : MonoBehaviour{
-    public MapPathFinding map;
     List<Cell> road = new List<Cell>();
     float t = 0;
-    int action;
+    int action = 15;
     void Start(){
-        for (int i = 0; i < 20; i++){
-            for(int j = 0; j < 25; j++)
-            if (!GetGrid.grid[i, j].IsWall) road.Add(GetGrid.grid[i, j]);
+        for (int i = 0; i < GetGrid.grid.GetLength(0); i++){
+            for(int j = 0; j < GetGrid.grid.GetLength(1); j++){
+                if (!GetGrid.grid[i, j].IsWall){
+                    road.Add(GetGrid.grid[i, j]); 
+                }
+            }
         }
-        action = Random.Range((int)GameManager.Instance.timerDay + 10, (int)GameManager.Instance.timerDay + 15);
+        //action = Random.Range(10, 15/*(int)GameManager.Instance.timerDay + 10, (int)GameManager.Instance.timerDay + 15*/);
     }
     private void Update(){
         t += Time.deltaTime;
@@ -19,18 +21,21 @@ public class EventRoad : MonoBehaviour{
         {
             BlockingRoad();
             t = 0;
-            action = Random.Range((int)GameManager.Instance.timerDay + 10, (int)GameManager.Instance.timerDay + 15);
+            action = Random.Range(10, 15/*(int)GameManager.Instance.timerDay + 10, (int)GameManager.Instance.timerDay + 15*/);
         }
     }
     public void BlockingRoad(){
         Cell eventCell = road[Random.Range(0, road.Count)];
         int end = Random.Range(8, 10);
-        float t = 0;
-        while(t < end)
+        float tAction = 0;
+        while (tAction < end)
         {
-            t += Time.deltaTime;
+            tAction += Time.deltaTime;
             eventCell.IsWall= true;
+            Debug.Log(eventCell);
+            Debug.Log(eventCell.IsWall);
         }
         eventCell.IsWall = false;
+        Debug.Log(eventCell.IsWall);
     }
 }
