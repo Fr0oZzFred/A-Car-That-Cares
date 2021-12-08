@@ -108,4 +108,52 @@ public class GridPathFinding : MonoBehaviour
         res.Reverse();
         return res; //note pour a pathfinding on fait current.priority + 1 + distance a vol d'oiseau
     }
+
+    public List<Cell> PathFindMenu(Cell start, Cell target)
+    {
+        ResetGrid();
+        PriorityHeap<Cell> frontier = new PriorityHeap<Cell>(); //Frontier = frontier des trucs a parcourir
+        start.node = frontier.Insert(start, 0);
+        while (!frontier.IsEmpty())
+        {
+            Node<Cell> current = frontier.PopMin();
+            Cell cell = current.content;
+            cell.visited = true;
+            //cell.SetMaterial(visited);
+            if (cell == target) break;
+
+            foreach (Cell neigh in cell.neighbors)
+            {
+                if (neigh.visited) continue;
+                if (neigh.IsWall) continue;
+
+                if (neigh.node == null)
+                {
+                    neigh.node = frontier.Insert(neigh, current.priority + 1);
+                    neigh.parent = cell;
+                }
+                else if (neigh.node.priority > current.priority + 1)  //Sert pour changer le chemin si on trouve plus court
+                {
+                    frontier.ChangePriority(neigh.node, current.priority + 1);
+                    neigh.parent = cell;
+                }
+            }
+        }
+
+        List<Cell> res = new List<Cell>();
+        Cell currentCell = target;
+        while (currentCell.parent != null)
+        {
+            res.Add(currentCell);
+            //currentCell.SetMaterial(chosen, true, false);
+            currentCell = currentCell.parent;
+            if (currentCell.parent == null)
+            {
+                //currentCell.SetMaterial(chosen, false, false);
+            }
+        }
+        //target.SetMaterial(chosen, true, true);
+        res.Reverse();
+        return res; //note pour a pathfinding on fait current.priority + 1 + distance a vol d'oiseau
+    }
 }
