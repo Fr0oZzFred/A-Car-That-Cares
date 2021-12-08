@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour {
             if (timerDay < 0) {
                 if (deliver >= objective) {
                     if (dayCount > GameDuration) {
+                        dayCount = GameDuration;
                         Restart();
                     } else {
                         dayCount++;
