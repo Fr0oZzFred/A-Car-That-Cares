@@ -21,21 +21,20 @@ public class EventRoad : MonoBehaviour{
         {
             BlockingRoad();
             t = 0;
-            action = Random.Range(10, 15/*(int)GameManager.Instance.timerDay + 10, (int)GameManager.Instance.timerDay + 15*/);
+            action = Random.Range(10, 15);
         }
     }
     public void BlockingRoad(){
         Cell eventCell = road[Random.Range(0, road.Count)];
         int end = Random.Range(8, 10);
         float tAction = 0;
+        eventCell.IsBlock = true;
+        eventCell.barrier.SetActive(true);
         while (tAction < end)
         {
             tAction += Time.deltaTime;
-            eventCell.IsWall= true;
-            Debug.Log(eventCell);
-            Debug.Log(eventCell.IsWall);
         }
-        eventCell.IsWall = false;
-        Debug.Log(eventCell.IsWall);
+        eventCell.IsBlock = false;
+        eventCell.barrier.SetActive(false);
     }
 }
