@@ -45,7 +45,8 @@ public class Character : MonoBehaviour
         {
             actualStock = stockMax;
         }
-        Debug.Log(actualStock);
+        UIManager.Instance.DisplayStock(carImage, stockMax, actualStock,nbColis);
+        UIManager.Instance.UpdateCarList();
     }
 
     public void GoTo(Cell target)

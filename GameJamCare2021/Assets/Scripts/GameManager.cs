@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour {
     public float timerDay;
     int GameDuration = 5;
     public int dayCount = 0;
-    public int deliver; //{ get; private set; }
+    public int deliver { get; private set; }
     public int[] dayTimeOne = new int[5];
     public int[] dayTimeTwo = new int[5];
     public int[] objectiveArray = new int[5];
@@ -42,19 +42,14 @@ public class GameManager : MonoBehaviour {
 
 
     private void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) Pause();
+            if (Input.GetKeyDown(KeyCode.Escape)) Pause();
         if (GameStates == GameState.InGame) {
             if (timerDay < 0) {
                 if (deliver >= objective) {
-                    if (dayCount > GameDuration) {
-                        dayCount = GameDuration;
-                        Restart();
-                    } else {
                         dayCount++;
                         victory = true;
                         ChangeGameState(GameState.GameOver);
                         victory = false;
-                    }
                 } else {
                     ChangeGameState(GameState.GameOver);
                 }
@@ -77,11 +72,14 @@ public class GameManager : MonoBehaviour {
         UIManager.Instance.ChangeState(oldGameState);
         switch (GameStates) {
             case GameState.MainMenu:
+                //VehicleCenterManager.Instance.ActivateCarMenu();
                 Restart();
                 Time.timeScale = 1;
                 camMainMenu.Priority = camInGame.Priority + 1;
                 break;
             case GameState.InGame:
+                if (dayCount > GameDuration) dayCount = GameDuration;
+                //VehicleCenterManager.Instance.DectivateCarMenu();
                 if (oldGameState != GameState.Pause) {
                     Restart();
                     VehicleCenterManager.Instance.InstanceCar(dayCount + 1);

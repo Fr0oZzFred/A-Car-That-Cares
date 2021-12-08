@@ -110,8 +110,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsWall: 0
   barrier: {fileID: 9011368740796351898}
+  IsBlock: 0
   choosenGO: {fileID: 6485614203476169056}
-  pingGO: {fileID: 0}
+  pingGO: {fileID: 6485614203476169056}
 --- !u!1001 &6251258037833690161
 PrefabInstance:
   m_ObjectHideFlags: 0

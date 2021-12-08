@@ -58,7 +58,6 @@ public class UIManager : MonoBehaviour {
     }
     public void UpdateScore() {
         textScore.text = GameManager.Instance.deliver + "/" + GameManager.Instance.objectiveArray[GameManager.Instance.dayCount];
-        textJauge.SetText("tutu");
     }
 
     public void TimerUpdate(float timer) {
@@ -82,19 +81,20 @@ public class UIManager : MonoBehaviour {
     public void DisplayStock(Sprite carImage, int stockMax, int stock, int nb) {
         DisplayStock(carImage, stockMax, stock);
         textJauge.GetComponent<TextMeshProUGUI>().SetText(nb.ToString());
-        if(nb > 0) textJauge.GetComponent<Animator>().SetBool("Positif", false);
-        else       textJauge.GetComponent<Animator>().SetBool("Positif",true);
-        textJauge.gameObject.SetActive(true);
+        if (nb > 0) {
+            textJauge.GetComponent<TextMeshProUGUI>().SetText("+" +nb.ToString());
+            textJauge.GetComponent<Animator>().SetTrigger("Positive");
+        } else textJauge.GetComponent<Animator>().SetTrigger("Negative");
     }
     public void UpdateCarList() {
         for(int i = 0; i < VehicleCenterManager.Instance.vehicleList.Count; i++) {
-            gestionnaireImage[i].gameObject.SetActive(true);
-            gestionnaireColis[i].gameObject.SetActive(true);
-            gestionnaireText[i].gameObject.SetActive(true);
             gestionnaireImage[i].sprite = VehicleCenterManager.Instance.vehicleList[i].carImage;
             gestionnaireText[i].SetText(
                 $"{VehicleCenterManager.Instance.vehicleList[i].actualStock}/" +
                 $"{VehicleCenterManager.Instance.vehicleList[i].stockMax}");
+            gestionnaireImage[i].gameObject.SetActive(true);
+            gestionnaireColis[i].gameObject.SetActive(true);
+            gestionnaireText[i].gameObject.SetActive(true);
         }
     }
 

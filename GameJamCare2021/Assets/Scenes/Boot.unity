@@ -221,9 +221,9 @@ MonoBehaviour:
   timerDay: 0
   dayCount: 0
   deliver: 0
-  dayTimeOne: 6400000096000000c8000000fa0000002c010000
-  dayTimeTwo: 6400000096000000c8000000fa0000002c010000
-  objectiveArray: 0a000000140000001e0000002800000032000000
+  dayTimeOne: 6400000096000000c8000000fa0000002c0100005e010000
+  dayTimeTwo: 6400000096000000c8000000fa0000002c0100005e010000
+  objectiveArray: 0a000000140000001e00000028000000320000003c000000
   victory: 0
   camMainMenu: {fileID: 936395762}
   camInGame: {fileID: 450199313}
@@ -5830,7 +5830,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1299293902
 RectTransform:
   m_ObjectHideFlags: 0
