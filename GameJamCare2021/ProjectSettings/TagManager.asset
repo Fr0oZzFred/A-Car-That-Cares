@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Maison
+  - Stockage
+  - School
+  - Church
   layers:
   - Default
   - TransparentFX

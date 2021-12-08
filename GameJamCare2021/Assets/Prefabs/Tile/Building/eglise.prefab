@@ -90,9 +90,10 @@ GameObject:
   - component: {fileID: 2229163462879881803}
   - component: {fileID: 5922748485231644401}
   - component: {fileID: 5393652320140952968}
+  - component: {fileID: -95960479394976893}
   m_Layer: 0
   m_Name: eglise
-  m_TagString: Untagged
+  m_TagString: Church
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,6 +142,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsWall: 1
   choosenGO: {fileID: 0}
+  pingGO: {fileID: 0}
+--- !u!114 &-95960479394976893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1559447199791476977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd182b8b2d79d648a20bfbcaf11ad5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 0}
+  rayDistance: 4
+  layers:
+    serializedVersion: 2
+    m_Bits: 256
+  direction: {x: 0, y: 0.2, z: -1}
+  stock: 0
 --- !u!1 &4456979636018213743
 GameObject:
   m_ObjectHideFlags: 0

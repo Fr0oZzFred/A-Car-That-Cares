@@ -406,9 +406,10 @@ GameObject:
   - component: {fileID: 5910642515867920907}
   - component: {fileID: 2648620819625151811}
   - component: {fileID: 8847731395970654095}
+  - component: {fileID: -4016971311495768571}
   m_Layer: 0
   m_Name: maison recolte
-  m_TagString: Untagged
+  m_TagString: Stockage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -460,6 +461,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsWall: 1
   choosenGO: {fileID: 0}
+  pingGO: {fileID: 0}
+--- !u!114 &-4016971311495768571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6434802337290694833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd182b8b2d79d648a20bfbcaf11ad5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 0}
+  rayDistance: 4
+  layers:
+    serializedVersion: 2
+    m_Bits: 256
+  direction: {x: 0, y: 0.2, z: -1}
+  stock: 0
 --- !u!1 &8156890888750969647
 GameObject:
   m_ObjectHideFlags: 0
