@@ -78,6 +78,7 @@ public class GridPathFinding : MonoBehaviour
             {
                 if (neigh.visited) continue;
                 if (neigh.IsWall) continue;
+                if (neigh.IsBlock) continue;
 
                 if (neigh.node == null)
                 {

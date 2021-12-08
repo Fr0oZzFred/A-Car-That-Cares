@@ -6,6 +6,8 @@ public class Cell : MonoBehaviour
 {
     //public GameObject wallObject;
     public bool IsWall;
+    public GameObject barrier;
+    public bool IsBlock;
     public GameObject choosenGO;
     public GameObject pingGO;
     [System.NonSerialized] public bool visited;
