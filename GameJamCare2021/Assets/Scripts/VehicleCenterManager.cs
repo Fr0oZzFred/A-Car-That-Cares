@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VehicleCenterManager : MonoBehaviour
 {
-    [SerializeField]GameObject CarPrefab;
+    [SerializeField]List<GameObject> CarPrefab;
     public List<Character> vehicleList;
 
     public static VehicleCenterManager Instance { get; private set; }
@@ -19,16 +19,23 @@ public class VehicleCenterManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("a"))
-            InstanceCar();
+        /*if (Input.GetKeyDown("a"))
+            InstanceCar();*/
     }
-
-    void InstanceCar()
+    public void ClearVehicle() {
+        for(int i = 0; i < vehicleList.Count; i++) {
+            Destroy(vehicleList[i].gameObject);
+        }
+        vehicleList.Clear();
+    }
+    public void InstanceCar(int nbOfCar)
     {
-        GameObject car = Instantiate(CarPrefab, transform.position, Quaternion.identity);
-        car.gameObject.name = "voiture" + vehicleList.Count;
-        Character script = car.GetComponent<Character>();
-        vehicleList.Add(script);
+        for(int i = 0; i < nbOfCar; i++) {
+            GameObject car = Instantiate(CarPrefab[i], transform.position, Quaternion.identity);
+            car.gameObject.name = "voiture" + vehicleList.Count;
+            Character script = car.GetComponent<Character>();
+            vehicleList.Add(script);
+        }
         UIManager.Instance.UpdateCarList();
     }
 }

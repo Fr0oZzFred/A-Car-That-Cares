@@ -76,12 +76,13 @@ public class GameManager : MonoBehaviour {
         UIManager.Instance.ChangeState(oldGameState);
         switch (GameStates) {
             case GameState.MainMenu:
-                if (oldGameState != GameState.MainMenu) Restart();
+                Restart();
                 Time.timeScale = 1;
                 camMainMenu.Priority = camInGame.Priority + 1;
                 break;
             case GameState.InGame:
                 if (oldGameState != GameState.Pause) Restart();
+                VehicleCenterManager.Instance.InstanceCar(dayCount + 1);
                 Time.timeScale = 1;
                 camInGame.Priority = camMainMenu.Priority + 1;
                 break;
@@ -114,7 +115,7 @@ public class GameManager : MonoBehaviour {
         nextLoad = b;
     }
     public void Restart() {
-        if (nextLoad) SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        VehicleCenterManager.Instance.ClearVehicle();
         ResetGameManager();
         UIManager.Instance.ResetUI();
     }
