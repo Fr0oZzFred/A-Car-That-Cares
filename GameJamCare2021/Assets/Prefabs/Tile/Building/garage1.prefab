@@ -111,3 +111,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsWall: 1
   choosenGO: {fileID: 0}
+  pingGO: {fileID: 0}
