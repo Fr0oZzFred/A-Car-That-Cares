@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BatimentController : MonoBehaviour
 {
-    public GameObject car;
+    public Character car;
     [SerializeField]
     private float rayDistance = 0;
     [SerializeField]
@@ -12,7 +12,7 @@ public class BatimentController : MonoBehaviour
     private bool collide;
     private bool demande;
     private bool houseSelected;
-    private string selection;
+    public Vector3 direction;
 
     RaycastHit hit;
 
@@ -23,13 +23,13 @@ public class BatimentController : MonoBehaviour
 
     void Update()
     {
-        if (MouseManagerQuentin.Instance.selection == null)
+        if (MouseManager.Instance.selected == null)
         {
             car = null;
         }
 
-        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.back) * rayDistance, Color.red);
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.back), out hit, rayDistance, layers))
+        Debug.DrawRay(transform.position, transform.TransformDirection(direction) * rayDistance, Color.red);
+        if (Physics.Raycast(transform.position, transform.TransformDirection(direction), out hit, rayDistance, layers))
         {
             collide = true;
         }
@@ -43,9 +43,9 @@ public class BatimentController : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (MouseManagerQuentin.Instance.isCar == true)
+        if (MouseManager.Instance.isCar == true)
         {
-            car = CarBehaviour.globalCar;
+            car = MouseManager.Instance.selected;
         }
         if (demande == true)
         {
@@ -57,14 +57,30 @@ public class BatimentController : MonoBehaviour
     {
         if (collide == true)
         {
-            selection = hit.transform.gameObject.name;
-
-            if (car != null && selection == car.name && demande == true && houseSelected == true)
+            if (car != null && demande == true && houseSelected == true && gameObject.tag == "Maison")
             {
                 Debug.Log("give");
                 demande = false;
-                transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f, transform.position.z);
                 houseSelected = false;
+            }
+            
+            if (car != null && demande == true && houseSelected == true && gameObject.tag == "Church")
+            {
+                Debug.Log("give");
+                demande = false;
+                houseSelected = false;
+            }
+
+            if (car != null && demande == true && houseSelected == true && gameObject.tag == "School")
+            {
+                Debug.Log("give");
+                demande = false;
+                houseSelected = false;
+            }
+
+            if (gameObject.tag == "Stockage")
+            {
+
             }
         }
     }
@@ -73,8 +89,8 @@ public class BatimentController : MonoBehaviour
     {
         if (demande == false)
         {
+            Debug.Log(transform.position);
             demande = true;
-            transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f, transform.position.z);
         }
     }
 }

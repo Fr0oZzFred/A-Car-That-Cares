@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 8092393809558655616}
   - component: {fileID: 5520425514701465780}
   - component: {fileID: 1601420939722636274}
+  - component: {fileID: 7001088141158766303}
   m_Layer: 0
   m_Name: maison sapin 2
-  m_TagString: Untagged
+  m_TagString: Maison
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,3 +112,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsWall: 1
   choosenGO: {fileID: 0}
+  pingGO: {fileID: 0}
+--- !u!114 &7001088141158766303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7731846285749121877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd182b8b2d79d648a20bfbcaf11ad5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 0}
+  rayDistance: 3
+  layers:
+    serializedVersion: 2
+    m_Bits: 256
+  direction: {x: 0, y: 1, z: 0.2}
