@@ -6,10 +6,9 @@ public class GridPathFinding : MonoBehaviour
 {
     public GameObject cellPrefab;
     Vector2Int sizeGrid;
-    public Cell[,] grid; //doit pas etre public mais on avait pas le temps
-    //public GetGrid getGrid;
-
-    public Material basic, visited, chosen;
+    public Cell[,] grid;
+    public Material chosen;
+    //public Material basic, visited, chosen;
 
     void Start() //Awake
     {
@@ -55,7 +54,7 @@ public class GridPathFinding : MonoBehaviour
             {
                 Cell c = GetGrid.grid[x, y];
                 c.visited = false;
-                c.SetMaterial(basic, false);
+                c.SetMaterial(chosen, false,true);
                 c.node = null;
                 c.parent = null;
             }
@@ -98,13 +97,14 @@ public class GridPathFinding : MonoBehaviour
         while (currentCell.parent != null)
         {
             res.Add(currentCell);
-            currentCell.SetMaterial(chosen,true);
+            currentCell.SetMaterial(chosen,true,false);
             currentCell = currentCell.parent;
             if (currentCell.parent == null)
             {
-                currentCell.SetMaterial(chosen,false);
+                currentCell.SetMaterial(chosen,false,false);
             }
         }
+        target.SetMaterial(chosen, true, true);
         res.Reverse();
         return res; //note pour a pathfinding on fait current.priority + 1 + distance a vol d'oiseau
     }
