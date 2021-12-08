@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 8143467123523235893}
   - component: {fileID: 7062688023318805599}
   - component: {fileID: 6294344759239858110}
+  - component: {fileID: 7372875309704561269}
   m_Layer: 0
   m_Name: ecole
-  m_TagString: Untagged
+  m_TagString: School
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,3 +111,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsWall: 1
   choosenGO: {fileID: 0}
+  pingGO: {fileID: 0}
+--- !u!114 &7372875309704561269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639112411773080032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd182b8b2d79d648a20bfbcaf11ad5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  car: {fileID: 0}
+  rayDistance: 4
+  layers:
+    serializedVersion: 2
+    m_Bits: 256
+  direction: {x: 0, y: 1, z: 0.2}
+  stock: 0

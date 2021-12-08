@@ -24,7 +24,7 @@ public class Character : MonoBehaviour
     private void Awake()
     {
         //globalCharacter = this;
-        currentCell = GetGrid.grid[13, 10];
+        currentCell = GetGrid.grid[12, 10];
         goToList = new List<Cell>();
 
         stockMax = vehicle.stockMax;
@@ -32,7 +32,20 @@ public class Character : MonoBehaviour
 
         carImage = vehicle.carImage;
         material = vehicle.mat;
-        actualStock = stockMax;
+        actualStock = 1;
+    }
+
+    public void ChangeStock(int nbColis)
+    {
+        if ((actualStock += nbColis) < stockMax && (actualStock += nbColis) > 0)
+        {
+            actualStock += nbColis / 3;
+        }
+        else
+        {
+            actualStock = stockMax;
+        }
+        Debug.Log(actualStock);
     }
 
     public void GoTo(Cell target)

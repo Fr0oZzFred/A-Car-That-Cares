@@ -12,13 +12,16 @@ public class BatimentController : MonoBehaviour
     private bool collide;
     private bool demande;
     private bool houseSelected;
+    private bool charging;
     public Vector3 direction;
+    public int stock = 0;
 
     RaycastHit hit;
 
     private void Start()
     {
         MaisonManager.Instance.AddMaison(this);
+        StartCoroutine(Charging());
     }
 
     void Update()
@@ -36,6 +39,13 @@ public class BatimentController : MonoBehaviour
         else
         {
             collide = false;
+        }
+
+        if (charging == true && stock < 10 && gameObject.tag == "Stockage")
+        {
+            charging = false;
+            stock++;
+            StartCoroutine(Charging());
         }
 
         Collide();
@@ -59,28 +69,30 @@ public class BatimentController : MonoBehaviour
         {
             if (car != null && demande == true && houseSelected == true && gameObject.tag == "Maison")
             {
-                Debug.Log("give");
+                car.ChangeStock(-1);
                 demande = false;
                 houseSelected = false;
             }
             
             if (car != null && demande == true && houseSelected == true && gameObject.tag == "Church")
             {
-                Debug.Log("give");
+                car.ChangeStock(-2);
                 demande = false;
                 houseSelected = false;
             }
 
             if (car != null && demande == true && houseSelected == true && gameObject.tag == "School")
             {
-                Debug.Log("give");
+                car.ChangeStock(-4);
                 demande = false;
                 houseSelected = false;
             }
 
             if (gameObject.tag == "Stockage")
             {
-
+                car = MouseManager.Instance.selected;
+                car.ChangeStock(stock);
+                stock = 0;
             }
         }
     }
@@ -89,8 +101,15 @@ public class BatimentController : MonoBehaviour
     {
         if (demande == false)
         {
-            Debug.Log(transform.position);
             demande = true;
         }
+        Debug.Log(transform.position);
+    }
+
+    private IEnumerator Charging()
+    {
+        charging = false;
+        yield return new WaitForSeconds(3);
+        charging = true;
     }
 }
