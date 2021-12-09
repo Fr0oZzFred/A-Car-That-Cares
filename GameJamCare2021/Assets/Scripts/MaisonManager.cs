@@ -38,4 +38,11 @@ public class MaisonManager : MonoBehaviour
     {
         maisonList.Add(maison);
     }
+
+    public void SetPopUpFalse() {
+        if(maisonList.Count>0)
+        foreach(BatimentController m in maisonList) {
+            m.askPopUp.SetActive(false);
+        }
+    }
 }

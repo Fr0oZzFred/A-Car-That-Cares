@@ -104,6 +104,7 @@ public class BatimentController : MonoBehaviour
         }
     }
 
+    
     public void Demande()
     {
         if (demande == false)
@@ -124,6 +125,7 @@ public class BatimentController : MonoBehaviour
 
     private IEnumerator ThanksPopUp() {
         askPopUp.SetActive(false);
+        SoundManager.Instance.PlayThanksEffect();
         thanksPopUp.SetActive(true);
         yield return new WaitForSeconds(3);
         thanksPopUp.SetActive(false);

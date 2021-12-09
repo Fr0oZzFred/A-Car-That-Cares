@@ -69,7 +69,6 @@ public class CharacterMenu : MonoBehaviour
         {
             int rnd = Random.Range(0, cellX.Count);
             GoTo(GetGrid.grid[cellX[rnd], cellY[rnd]]);
-            Debug.Log("da");
             currentCell.SetMaterial(material, false, true);
         }
         //script direction

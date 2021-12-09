@@ -76,22 +76,24 @@ public class GameManager : MonoBehaviour {
         UIManager.Instance.ChangeState(oldGameState);
         switch (GameStates) {
             case GameState.MainMenu:
-                if(!firstTime) VehicleCenterManager.Instance.ActivateCarMenu();
+                SoundManager.Instance.PlayInGameTheme();
+                MaisonManager.Instance.SetPopUpFalse();
+                if (!firstTime) VehicleCenterManager.Instance.ActivateCarMenu();
                 Restart();
                 Time.timeScale = 1;
                 camMainMenu.Priority = camInGame.Priority + 1;
                 break;
             case GameState.InGame:
+                if (!SoundManager.Instance.inGameSound.isPlaying)
+                SoundManager.Instance.PlayInGameTheme();
                 if (firstTime) {
                     Time.timeScale = 0;
                     tuto.SetActive(true);
                     VehicleCenterManager.Instance.InstanceCar(dayCount + 1);
                     VehicleCenterManager.Instance.DectivateCarMenu();
-                    Debug.Log("dea");
                 } else {
                     if (dayCount > GameDuration) dayCount = GameDuration;
                     VehicleCenterManager.Instance.DectivateCarMenu();
-                    Debug.Log("dea");
                     if (oldGameState != GameState.Pause) {
                         Restart();
                         VehicleCenterManager.Instance.InstanceCar(dayCount + 1);
@@ -102,6 +104,7 @@ public class GameManager : MonoBehaviour {
                 camInGame.Priority = camMainMenu.Priority + 1;
                 break;
             case GameState.Pause:
+                if (SoundManager.Instance.inGameSound.isPlaying) SoundManager.Instance.inGameSound.Pause();
                 Time.timeScale = 0;
                 break;
             case GameState.GameOver:
