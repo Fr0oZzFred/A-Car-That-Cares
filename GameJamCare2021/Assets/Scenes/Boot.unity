@@ -148,7 +148,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6486695}
-  m_LocalRotation: {x: 0.26963553, y: 0.49285972, z: -0.16388664, w: 0.81088054}
+  m_LocalRotation: {x: 0.26963553, y: 0.49285975, z: -0.16388665, w: 0.81088054}
   m_LocalPosition: {x: 0.25634956, y: 20, z: 5.6835995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -223,6 +223,8 @@ MonoBehaviour:
   dayTimeOne: 6400000096000000c8000000fa0000002c0100005e010000
   dayTimeTwo: 6400000096000000c8000000fa0000002c0100005e010000
   objectiveArray: 050000000a000000140000001e0000002800000032000000
+  rndTimerMin: 050000000500000005000000050000000300000003000000
+  rndTimerMax: 0d0000000d0000000d0000000c0000000a0000000a000000
   victory: 0
   tuto: {fileID: 262148756}
   camMainMenu: {fileID: 936395762}
@@ -5086,7 +5088,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936395760}
-  m_LocalRotation: {x: 0.26963553, y: 0.49285972, z: -0.16388664, w: 0.81088054}
+  m_LocalRotation: {x: 0.26963553, y: 0.49285975, z: -0.16388665, w: 0.81088054}
   m_LocalPosition: {x: 0.25634956, y: 20, z: 5.6835995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

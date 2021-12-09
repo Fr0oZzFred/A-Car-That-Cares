@@ -16,7 +16,7 @@ public class MaisonManager : MonoBehaviour
         Instance = this;
         maisonList = new List<BatimentController>();
 
-        rndTimer = Random.Range(1, 4); //bouger var avec temps
+        rndTimer = Random.Range(GameManager.Instance.rndTimerMin[GameManager.Instance.dayCount], GameManager.Instance.rndTimerMax[GameManager.Instance.dayCount]); //bouger var avec temps
     }
 
     void Update()
@@ -24,11 +24,11 @@ public class MaisonManager : MonoBehaviour
         if(GameManager.GameStates == GameManager.GameState.InGame) {
             if (rndTimer < 0) {
                 rndChoose = Random.Range(0, maisonList.Count);
-                if (maisonList[rndChoose].tag == "Maison") {
+                maisonList[rndChoose].Demande();
+                /*if (maisonList[rndChoose].tag == "Maison"|| maisonList[rndChoose].tag == "Church" || maisonList[rndChoose].tag == "School") {
                     maisonList[rndChoose].Demande();
-                }
-                // créer liste rndTimerBatiment (par exemple) puis Récup dans rndTimerBatiment[GameManager.Instance.DayCount]
-                rndTimer = Random.Range(5, 20); //bouger var avec temps 
+                }*/
+                rndTimer = Random.Range(GameManager.Instance.rndTimerMin[GameManager.Instance.dayCount], GameManager.Instance.rndTimerMax[GameManager.Instance.dayCount]); //bouger var avec temps 
             }
             rndTimer -= Time.deltaTime;
         }

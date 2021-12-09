@@ -80,7 +80,7 @@ public class BatimentController : MonoBehaviour
             
             if (car != null && demande == true && gameObject.tag == "Church" && car.actualStock > 1)
             {
-                GameManager.Instance.AddScore(1);
+                GameManager.Instance.AddScore(2);
                 car.ChangeStock(-2);
                 demande = false;
                 houseSelected = false;
@@ -88,7 +88,7 @@ public class BatimentController : MonoBehaviour
             }
 
             if (car != null && demande == true && gameObject.tag == "School" && car.actualStock > 3) {
-                GameManager.Instance.AddScore(1);
+                GameManager.Instance.AddScore(4);
                 car.ChangeStock(-4);
                 demande = false;
                 houseSelected = false;

@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour {
     public int[] dayTimeOne = new int[5];
     public int[] dayTimeTwo = new int[5];
     public int[] objectiveArray = new int[5];
+    public int[] rndTimerMin = new int[5];
+    public int[] rndTimerMax = new int[5];
     public int objective { get; private set; }
     public bool victory = false;
     bool firstTime = true;
