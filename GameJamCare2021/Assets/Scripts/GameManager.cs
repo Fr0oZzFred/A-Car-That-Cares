@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour {
         UIManager.Instance.ChangeState(oldGameState);
         switch (GameStates) {
             case GameState.MainMenu:
-                SoundManager.Instance.PlayInGameTheme();
+                if(oldGameState != GameState.Credit) SoundManager.Instance.PlayInGameTheme();
                 MaisonManager.Instance.SetPopUpFalse();
                 if (!firstTime) VehicleCenterManager.Instance.ActivateCarMenu();
                 Restart();
