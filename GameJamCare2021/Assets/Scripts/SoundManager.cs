@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource inGameSound;
     public AudioSource thanksSound;
+    public AudioSource carSound;
     private void Awake() {
         Instance = this;
     }
@@ -19,5 +20,10 @@ public class SoundManager : MonoBehaviour
     public void PlayThanksEffect() {
         if(!thanksSound.isPlaying)
         thanksSound.Play();
+    } 
+
+    public void PlayCarEffect() {
+        if(!thanksSound.isPlaying)
+        carSound.Play();
     }
 }
