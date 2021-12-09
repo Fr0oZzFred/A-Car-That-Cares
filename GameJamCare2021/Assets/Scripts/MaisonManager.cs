@@ -27,7 +27,8 @@ public class MaisonManager : MonoBehaviour
                 if (maisonList[rndChoose].tag == "Maison") {
                     maisonList[rndChoose].Demande();
                 }
-                rndTimer = Random.Range(5, 20); //bouger var avec temps
+                // créer liste rndTimerBatiment (par exemple) puis Récup dans rndTimerBatiment[GameManager.Instance.DayCount]
+                rndTimer = Random.Range(5, 20); //bouger var avec temps 
             }
             rndTimer -= Time.deltaTime;
         }
