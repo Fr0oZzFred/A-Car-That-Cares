@@ -485,7 +485,7 @@ MonoBehaviour:
   layers:
     serializedVersion: 2
     m_Bits: 256
-  direction: {x: 0, y: 1, z: 0.2}
+  direction: {x: -0.25, y: 1, z: 0.2}
   stock: 0
   askPopUp: {fileID: 858358426410594667}
   thanksPopUp: {fileID: 3873436034899288917}
