@@ -76,7 +76,8 @@ public class Character : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if(MouseManager.Instance.selected != null) {
+        SoundManager.Instance.PlayCarEffect();
+        if (MouseManager.Instance.selected != null) {
             MouseManager.Instance.selected.pingCar.GetComponent<Animator>().SetBool("Moving", false);
             MouseManager.Instance.selected.pingCar.SetActive(false);
         }

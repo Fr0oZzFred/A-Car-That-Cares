@@ -9,6 +9,8 @@ public class SoundManager : MonoBehaviour
     public AudioSource inGameSound;
     public AudioSource thanksSound;
     public AudioSource carSound;
+    public AudioSource victorySound;
+    public AudioSource buttonSound;
     private void Awake() {
         Instance = this;
     }
@@ -23,7 +25,16 @@ public class SoundManager : MonoBehaviour
     } 
 
     public void PlayCarEffect() {
-        if(!thanksSound.isPlaying)
+        if(!carSound.isPlaying)
         carSound.Play();
+    }
+    
+    public void PlayVictoryEffect() {
+        if(!victorySound.isPlaying)
+        victorySound.Play();
+    }  
+    
+    public void PlaybuttonEffect() {
+        buttonSound.Play();
     }
 }
