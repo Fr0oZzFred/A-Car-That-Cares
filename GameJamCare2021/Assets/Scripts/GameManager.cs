@@ -53,6 +53,7 @@ public class GameManager : MonoBehaviour {
                         dayCount++;
                         victory = true;
                         ChangeGameState(GameState.GameOver);
+                    SoundManager.Instance.PlayVictoryEffect();
                         victory = false;
                 } else {
                     ChangeGameState(GameState.GameOver);
