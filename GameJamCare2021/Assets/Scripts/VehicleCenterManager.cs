@@ -7,6 +7,8 @@ public class VehicleCenterManager : MonoBehaviour
     [SerializeField]List<GameObject> CarPrefab;
     public List<Character> vehicleList;
 
+    bool isActive = false;
+
     [SerializeField] List<GameObject> carsMenu;
 
     public static VehicleCenterManager Instance { get; private set; }
@@ -21,11 +23,9 @@ public class VehicleCenterManager : MonoBehaviour
 
     void Update()
     {
-        /*if (Input.GetKeyDown("a"))
-            InstanceCar();*/
-        /*if(GetGrid.grid != null) {  Enzo
+        if(GetGrid.grid != null && !isActive) { 
             ActivateCarMenu();
-        }*/
+        }
     }
     public void ClearVehicle() {
         for(int i = 0; i < vehicleList.Count; i++) {
@@ -50,6 +50,7 @@ public class VehicleCenterManager : MonoBehaviour
         {
             carsMenu[i].SetActive(true);
         }
+        isActive = true;
     }
 
     public void DectivateCarMenu()
