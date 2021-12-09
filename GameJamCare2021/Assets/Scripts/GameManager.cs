@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour {
         UIManager.Instance.ChangeState(oldGameState);
         switch (GameStates) {
             case GameState.MainMenu:
-                //if(!firstTime) VehicleCenterManager.Instance.ActivateCarMenu(); Enzo
+                if(!firstTime) VehicleCenterManager.Instance.ActivateCarMenu();
                 Restart();
                 Time.timeScale = 1;
                 camMainMenu.Priority = camInGame.Priority + 1;
@@ -86,9 +86,12 @@ public class GameManager : MonoBehaviour {
                     Time.timeScale = 0;
                     tuto.SetActive(true);
                     VehicleCenterManager.Instance.InstanceCar(dayCount + 1);
+                    VehicleCenterManager.Instance.DectivateCarMenu();
+                    Debug.Log("dea");
                 } else {
                     if (dayCount > GameDuration) dayCount = GameDuration;
-                    //VehicleCenterManager.Instance.DectivateCarMenu(); Enzo
+                    VehicleCenterManager.Instance.DectivateCarMenu();
+                    Debug.Log("dea");
                     if (oldGameState != GameState.Pause) {
                         Restart();
                         VehicleCenterManager.Instance.InstanceCar(dayCount + 1);

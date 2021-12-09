@@ -69,6 +69,7 @@ public class CharacterMenu : MonoBehaviour
         {
             int rnd = Random.Range(0, cellX.Count);
             GoTo(GetGrid.grid[cellX[rnd], cellY[rnd]]);
+            Debug.Log("da");
             currentCell.SetMaterial(material, false, true);
         }
         //script direction
@@ -82,6 +83,7 @@ public class CharacterMenu : MonoBehaviour
         if(!flemInstance && GetGrid.grid[startX, startY] != null)
         {
             currentCell = GetGrid.grid[startX, startY];
+            flemInstance = true;
         }
     }
     /*
