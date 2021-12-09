@@ -146,6 +146,9 @@ public class GameManager : MonoBehaviour {
         AddScore(-deliver);
     }
 
+    public void LinkGameJam() {
+        Application.OpenURL("https://itch.io/jam/care-jam-2021");
+    }
     public void QuitGame() {
         Application.Quit();
     }
