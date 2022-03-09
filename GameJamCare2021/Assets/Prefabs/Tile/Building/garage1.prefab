@@ -93,7 +93,7 @@ BoxCollider:
   m_GameObject: {fileID: 3385592222981495322}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.10143944, y: 0.10695271, z: 0.035972986}
   m_Center: {x: -0.00034547338, y: -0.0031019521, z: 0.01789746}
@@ -110,5 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsWall: 1
+  barrier: {fileID: 0}
+  IsBlock: 0
   choosenGO: {fileID: 0}
   pingGO: {fileID: 0}

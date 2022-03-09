@@ -150,6 +150,9 @@ public class GameManager : MonoBehaviour {
     public void LinkGameJam() {
         Application.OpenURL("https://itch.io/jam/care-jam-2021");
     }
+    public void LinkGameJamPage() {
+        Application.OpenURL("https://nedeleko.itch.io/a-car-that-cares");
+    }
     public void QuitGame() {
         Application.Quit();
     }
